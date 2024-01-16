@@ -1,0 +1,11 @@
+.continer {
+  width: 1200px;
+  background-color: azure;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  background-image: url(../imgs/template.jpeg);
+}

@@ -1,0 +1,75 @@
+// ========== 变量 ==========
+@width: 10px;
+@height: @width + 10px;
+
+.box {
+  width: @width;
+  height: @height;
+}
+
+// ========== 混合 ==========
+
+// 加上()后，构建出的代码不包含 .center 对象
+.center(@type:absolute) {
+  position: @type;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+.post a {
+  color: red;
+  .bordered();
+  .center(fixed);
+}
+
+// ========== 嵌套 ==========
+
+#header {
+  color: black;
+
+  &:hover {
+    color: #303030;
+  }
+
+  .navigation {
+    font-size: 12px;
+  }
+
+  .logo {
+    width: 300px;
+  }
+}
+
+// ========== 运算 ==========
+
+@width: 10px;
+
+#header {
+  width: @width * 2;
+}
+
+// ========== 函数 ==========
+
+@some: foo;
+
+div {
+  margin: if((2 > 1), 0, 3px);
+  color: if((iscolor(@some)), @some, black);
+}
+
+// ========== 作用域 ==========
+
+@var: red;
+
+#page {
+  @var: white;
+  #header {
+    color: @var; // white
+  }
+}

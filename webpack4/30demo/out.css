@@ -1,0 +1,21 @@
+.main {
+  color: red;
+}
+
+.main::-webkit-input-placeholder {
+  color: #f0f0f0;
+}
+
+.main:-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+.main::-ms-input-placeholder {
+  color: #f0f0f0;
+}
+
+.main::placeholder {
+  color: #f0f0f0;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zb3VyY2UucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRkE7RUFDRSxjQUFjO0FBQ2hCOztBQUZBO0VBQ0UsY0FBYztBQUNoQjs7QUFGQTtFQUNFLGNBQWM7QUFDaEIiLCJmaWxlIjoib3V0LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluIHtcbiAgY29sb3I6IHJlZDtcbn1cblxuLm1haW46OnBsYWNlaG9sZGVyIHtcbiAgY29sb3I6ICNmMGYwZjA7XG59XG4iXX0= */

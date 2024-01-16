@@ -1,0 +1,39 @@
+.box {
+  width: 10px;
+  height: 20px;
+}
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+.post a {
+  color: red;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#header {
+  color: black;
+}
+#header:hover {
+  color: #303030;
+}
+#header .navigation {
+  font-size: 12px;
+}
+#header .logo {
+  width: 300px;
+}
+#header {
+  width: 20px;
+}
+div {
+  margin: 0;
+  color: black;
+}
+#page #header {
+  color: white;
+}

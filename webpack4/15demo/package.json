@@ -1,0 +1,20 @@
+{
+    "name": "15demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.dev.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "webpack --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
+        "dev:env": "webpack --env.dev",
+        "build:env": "webpack --env.prod"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12"
+    }
+}

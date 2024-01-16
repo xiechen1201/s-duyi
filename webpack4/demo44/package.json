@@ -1,0 +1,25 @@
+{
+  "name": "_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.8.38",
+    "babel-loader": "^8.3.0",
+    "cache-loader": "^4.1.0",
+    "webpack": "4",
+    "webpack-cli": "3",
+    "webpack-dev-server": "3"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21"
+  }
+}

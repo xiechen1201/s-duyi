@@ -13,7 +13,7 @@ class Hello extends React.Component {
         <li>类组件</li>
         <li>姓名: {this.props.stuInfo.name}</li>
         <li>年龄: {this.props.stuInfo.age}</li>
-        <div onClick={this.props.changeState.bind(this, 'Hello str')}>触犯更新</div>
+        <div onClick={() => this.props.changeState('Hello str')}>触发更新</div>
       </ul>
     );
   }

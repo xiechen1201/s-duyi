@@ -1,0 +1,29 @@
+a {
+    text-decoration: none;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+.navigation {
+    line-height: 50px;
+    margin: 0 10px;
+    font-weight: 400px;
+}
+
+.active {
+    color: #ccc;
+}
+
+.table {
+    margin-top: 10px;
+}
+
+.btn-primary a {
+    color: #fff;
+}
+
+.glyphicon::before {
+    margin-right: 10px;
+}

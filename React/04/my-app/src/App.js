@@ -59,15 +59,16 @@ export default App; */
 
   onClickBtn() {
     // 异步的操作
-    this.setState({
-      num: this.state.num + 1
-    });
-    this.setState({
-      num: this.state.num + 1
-    });
-    this.setState({
-      num: this.state.num + 1
-    });
+    // this.setState({
+    //   num: this.state.num + 1
+    // });
+    // this.setState({
+    //   num: this.state.num + 1
+    // });
+    // this.setState({
+    //   num: this.state.num + 1
+    // });
+    // console.log(this.state.num);
   }
 
   render() {
@@ -113,10 +114,12 @@ export default App; */
     // );
 
     // 更加优雅的方式：
-    this.setState((cur) => ({
-      num: cur.num + 1
-    }));
-    this.setState((cur) => ({
+    this.setState((cur) => {
+      return {
+        num: cur.num + 1
+      };
+    });
+     this.setState((cur) => ({
       // 这里的 cur.name 就是 2
       num: cur.num + 1
     }));
@@ -155,7 +158,7 @@ export default App; */
   render() {
     return (
       <>
-        <Hello stuInfo={this.state} changeState={this.changeState} />
+        <Hello stuInfo={this.state} changeState={this.changeState.bind(this)} />
         <World stuInfo={this.state} str='world' num={123} bool={true} />
         <Button>
           <span>按钮内容</span>

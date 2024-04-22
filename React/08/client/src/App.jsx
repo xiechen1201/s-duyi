@@ -1,9 +1,5 @@
-import { Routes, Route, Navigate, NavLink } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import AddOrEdit from './components/AddOrEdit';
-import Detail from './components/Detail';
-import './css/App.css';
+import Router from './router/router';
+import { NavLink } from 'react-router-dom';
 
 function App() {
     return (
@@ -47,15 +43,7 @@ function App() {
             </nav>
             {/* 匹配路由组件的显示在这个位置 */}
             <div className='content'>
-                <Routes>
-                    {/* 在 Routes 中书写对应的路由，以及路由对应的组件 */}
-                    <Route path='/' element={<Navigate replace to='/home' />} />
-                    <Route path='/home' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/addOrEdit' element={<AddOrEdit />} />
-                    <Route path='/edit/:id' element={<AddOrEdit />} />
-                    <Route path='/detail/:id' element={<Detail />} />
-                </Routes>
+                <Router />
             </div>
         </div>
     );

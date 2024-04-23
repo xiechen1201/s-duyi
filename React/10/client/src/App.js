@@ -1,6 +1,6 @@
-import './style/App.css';
 import { Layout } from 'antd';
 import RouterConfig from './router/index';
+import './style/App.css';
 import NavHeader from './components/NavHeader/NavHeader';
 import PageFooter from './components/PageFooter/PageFooter';
 

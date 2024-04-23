@@ -1,13 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Input, Select, Space } from 'antd';
+import { useDispatch } from 'react-redux';
+import { Input, Select, Space, message } from 'antd';
+import { initUserInfo, changeLoginStatus } from '../../redux/userSlice';
 import LoginAvatar from '../LoginAvatar/LoginAvatar';
 import LoginForm from '../LoginForm/LoginForm';
+import { getInfoApi, getUserByIdApi } from '../../api/user';
 
 const { Search } = Input;
 
 function NavHeader(props) {
+    const dispatch = useDispatch();
+
     const [isShowModal, setIsShowModal] = useState(false);
+
+    // 初始化登录
+    useEffect(() => {
+        userUserInfo();
+    }, []);
+
+    async function userUserInfo() {
+        let result = await getInfoApi();
+        let data = await getUserByIdApi(result._id);
+
+        dispatch(initUserInfo(data));
+        dispatch(changeLoginStatus(true));
+    }
 
     function closeModal() {
         setIsShowModal(false);

@@ -3,12 +3,19 @@ import { Modal, Radio, Form, Input, Row, Col, Checkbox, Button, message } from '
 import { useDispatch } from 'react-redux';
 import { initUserInfo, changeLoginStatus } from '../../redux/userSlice';
 import LoginFormStyle from './LoginForm.module.css';
-import { getCaptchaApi, userIsExistApi, addUserApi } from '../../api/user';
+import {
+    getCaptchaApi,
+    userIsExistApi,
+    addUserApi,
+    userLoginApi,
+    getUserByIdApi
+} from '../../api/user';
 
 function LoginForm(props) {
     // store
     const dispatch = useDispatch();
 
+    // state
     const [value, setValue] = useState(1);
     // 登录表单的状态数据
     const [loginInfo, setLoginInfo] = useState({
@@ -52,7 +59,31 @@ function LoginForm(props) {
         }
     }
 
-    function loginHandle() {}
+    async function loginHandle() {
+        let result = await userLoginApi(loginInfo);
+
+        if (result.code !== 0) {
+            message.error(result.msg);
+            onClickcaptcha();
+        } else {
+            if (!result.data.data) {
+                message.error('账号或密码错误');
+            } else if (!result.data.data.enabled) {
+                message.error('该账号已被禁用，请联系管理员');
+            } else {
+                // 存储 token
+                localStorage.setItem('token', result.data.token);
+
+                // 将用户信息存储到 store 中
+                let userInfo = await getUserByIdApi(result.data.data._id);
+                dispatch(initUserInfo(userInfo.data));
+                dispatch(changeLoginStatus(true));
+                // 关闭弹窗
+                props.closeModal();
+            }
+        }
+    }
+
     async function registerHandle() {
         let result = await addUserApi(registerInfo);
 

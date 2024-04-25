@@ -3,6 +3,9 @@ import IssuesStyle from './Issues.module.css';
 import { Pagination } from 'antd';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import IssueItem from '../../components/IssueItem/IssueItem';
+import AddIssueBtn from '../../components/AddIssueBtn/AddIssueBtn';
+import Recommend from '../../components/Recommend/Recommend';
+import ScoreRank from "../../components/ScoreRank/ScoreRank"
 import { getIssueByPageApi } from '../../api/issues';
 
 function Issues(props) {
@@ -48,17 +51,22 @@ function Issues(props) {
         <div className={IssuesStyle.container}>
             <PageHeader title='问答列表' />
             <div className={IssuesStyle.issueContainer}>
-                <div className={IssuesStyle.leftSide}></div>
-                <div className={IssuesStyle.rightSide}></div>
-            </div>
-            {issueListDOM}
-            <div className='paginationContainer'>
-                <Pagination
-                    showQuickJumper
-                    defaultCurrent={1}
-                    total={page.total}
-                    onChange={onChangePagination}
-                />
+                <div className={IssuesStyle.leftSide}>
+                    {issueListDOM}
+                    <div className='paginationContainer'>
+                        <Pagination
+                            showQuickJumper
+                            defaultCurrent={1}
+                            total={page.total}
+                            onChange={onChangePagination}
+                        />
+                    </div>
+                </div>
+                <div className={IssuesStyle.rightSide}>
+                    <AddIssueBtn />
+                    <Recommend />
+                    <ScoreRank />
+                </div>
             </div>
         </div>
     );

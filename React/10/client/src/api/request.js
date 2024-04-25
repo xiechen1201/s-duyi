@@ -18,7 +18,10 @@ request.interceptors.request.use(
 
         return config;
     },
-    (error) => console.log('request error:', error)
+    (error) => {
+        console.log('request error:', error);
+        return Promise.reject(error);
+    }
 );
 
 // 响应拦截
@@ -28,7 +31,7 @@ request.interceptors.response.use(
             // 如果 response.data 是个对象
             if (response.data && response.data instanceof Object) {
                 // 如果 code 不为 0
-                if (response.data.code !== 0) {
+               if (response.data.code !== 0) {
                     message.warning(response.data.msg);
                     return Promise.reject(response.data.msg);
                 } else {
@@ -41,7 +44,10 @@ request.interceptors.response.use(
             return Promise.reject('error');
         }
     },
-    (error) => console.log('response error:', error)
+    (error) => {
+        console.warn('response error:', error);
+        return Promise.reject(error.message);
+    }
 );
 
 export default request;

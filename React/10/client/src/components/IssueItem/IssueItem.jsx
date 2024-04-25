@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Tag } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTypeList } from '../../redux/typeSlice';
 import IssueItemStyle from './IssueItem.module.css';
@@ -8,12 +9,18 @@ import { getUserByIdApi } from '../../api/user';
 
 function IssueItem(props) {
     const dispatch = useDispatch();
-    const { typeList } = useSelector((state) => state.type);
+    const navigate = useNavigate();
 
+    const { typeList } = useSelector((state) => state.type);
     const [userInfo, setUserInfo] = useState({});
+
     async function getUserInfo() {
         let result = await getUserByIdApi(props.issueInfo.userId);
         setUserInfo(result);
+    }
+
+    function onClickTitle() {
+        navigate('/issueDetail/' + props.issueInfo._id);
     }
 
     useEffect(() => {
@@ -46,7 +53,9 @@ function IssueItem(props) {
                 <div>浏览</div>
             </div>
             <div className={IssueItemStyle.issueContainer}>
-                <div className={IssueItemStyle.top}>{props.issueInfo.issueTitle}</div>
+                <div className={IssueItemStyle.top} onClick={onClickTitle}>
+                    {props.issueInfo.issueTitle}
+                </div>
                 <div className={IssueItemStyle.bottom}>
                     <div className={IssueItemStyle.left}>
                         <Tag color={colorArr[typeList.indexOf(type) % colorArr.length]}>

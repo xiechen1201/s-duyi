@@ -16,8 +16,12 @@ module.exports.formatResponse = function (code, msg, data) {
 
 // 解析客户端传递过来的 token
 module.exports.analysisToken = function (token) {
+
+  const token2 = token ? token.split(" ")[1] : ""
+
   return jwt.verify(
-    token.split(" ")[1],
+    // token.split(" ")[1],
+    token2,
     md5(process.env.JWT_SECRET),
     function (err, decode) {
       return decode;

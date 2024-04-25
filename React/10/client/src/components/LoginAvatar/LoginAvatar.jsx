@@ -38,7 +38,7 @@ function LoginAvatar(props) {
             <Popover content={PopoverContent} trigger='hover'>
                 <div className={LoginAvatarStyle.avatarContainer}>
                     <Avatar
-                        src={<Image src={'/img' + userInfo.avatar} />}
+                        src={<Image src={'/img' + userInfo.avatar} preview={false} />}
                         style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>
                         U
                     </Avatar>

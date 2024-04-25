@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { editUserApi } from '../api/user';
 
 const userSlice = createSlice({
     name: 'user',
@@ -18,9 +19,26 @@ const userSlice = createSlice({
         // 清除用户信息
         clearUserInfo: (state) => {
             state.userInfo = {};
+        },
+        // 更新用户信息
+        updateUserInfo: (state, { payload }) => {
+            for (const key in payload) {
+                state.userInfo[key] = payload[key];
+            }
         }
     }
 });
 
-export const { initUserInfo, changeLoginStatus, clearUserInfo } = userSlice.actions;
+export const updateUserInfoAsync = createAsyncThunk(
+    'user/updateUserInfoAsync',
+    async (payload, actions) => {
+        try {
+            await editUserApi(payload.userId, payload.newInfo);
+            actions.dispatch(updateUserInfo(payload.newInfo));
+        } catch (error) {}
+    }
+);
+
+export const { initUserInfo, changeLoginStatus, clearUserInfo, updateUserInfo } =
+    userSlice.actions;
 export default userSlice.reducer;

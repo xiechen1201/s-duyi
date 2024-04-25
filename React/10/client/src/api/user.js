@@ -53,3 +53,21 @@ export function getInfoApi() {
         method: 'GET'
     });
 }
+
+// 获取积分前十的用户
+export function getUserByPointsRankApi() {
+    return request({
+        url: '/api/user/pointsrank',
+        method: 'GET'
+    });
+}
+
+// 根据 id 修改用户
+export function editUserApi(userId, newUserInfo){
+    return request({
+      url : `/api/user/${userId}`,
+      method : "PATCH",
+      data : newUserInfo
+    })
+  }
+  

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Input, Select, Space, message } from 'antd';
+import { Input, Select, Space } from 'antd';
 import { initUserInfo, changeLoginStatus } from '../../redux/userSlice';
 import LoginAvatar from '../LoginAvatar/LoginAvatar';
 import LoginForm from '../LoginForm/LoginForm';
@@ -20,11 +20,13 @@ function NavHeader(props) {
     }, []);
 
     async function userUserInfo() {
-        let result = await getInfoApi();
-        let data = await getUserByIdApi(result._id);
+        try {
+            let result = await getInfoApi();
+            let data = await getUserByIdApi(result?._id);
 
-        dispatch(initUserInfo(data));
-        dispatch(changeLoginStatus(true));
+            dispatch(initUserInfo(data || {}));
+            dispatch(changeLoginStatus(true));
+        } catch (error) {}
     }
 
     function closeModal() {

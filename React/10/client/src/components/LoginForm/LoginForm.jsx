@@ -43,8 +43,10 @@ function LoginForm(props) {
 
     // 获取验证码
     async function onClickcaptcha() {
-        const result = await getCaptchaApi();
-        setCaptcha(result);
+        try {
+            const result = await getCaptchaApi();
+            setCaptcha(result);
+        } catch (error) {}
     }
 
     // 验证登录账号是否存在
@@ -60,27 +62,31 @@ function LoginForm(props) {
     }
 
     async function loginHandle() {
-        let result = await userLoginApi(loginInfo);
-
-        if (result.code !== 0) {
-            message.error(result.msg);
+        let result = {};
+        try {
+            result = await userLoginApi(loginInfo);
+        } catch (error) {
             onClickcaptcha();
-        } else {
-            if (!result.data.data) {
-                message.error('账号或密码错误');
-            } else if (!result.data.data.enabled) {
-                message.error('该账号已被禁用，请联系管理员');
-            } else {
-                // 存储 token
-                localStorage.setItem('token', result.data.token);
+        }
 
-                // 将用户信息存储到 store 中
-                let userInfo = await getUserByIdApi(result.data.data._id);
-                dispatch(initUserInfo(userInfo.data));
-                dispatch(changeLoginStatus(true));
-                // 关闭弹窗
-                props.closeModal();
-            }
+        if (!result.data) {
+            return false;
+        }
+
+        if (!result.data) {
+            message.error('账号或密码错误');
+        } else if (!result.data.enabled) {
+            message.error('该账号已被禁用，请联系管理员');
+        } else {
+            // 存储 token
+            localStorage.setItem('token', result.token);
+
+            // 将用户信息存储到 store 中
+            let userInfo = await getUserByIdApi(result.data._id);
+            dispatch(initUserInfo(userInfo.data));
+            dispatch(changeLoginStatus(true));
+            // 关闭弹窗
+            props.closeModal();
         }
     }
 

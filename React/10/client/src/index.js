@@ -5,6 +5,7 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 
 import './style/index.css';
+import './style/iconfont.css';
 import './style/ant-reset.css';
 import App from './App';
 

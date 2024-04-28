@@ -1,32 +1,51 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Input, Select, Space } from 'antd';
 import { initUserInfo, changeLoginStatus } from '../../redux/userSlice';
+import { getInfoApi, getUserByIdApi } from '../../api/user';
+
+import { Input, Select, Space } from 'antd';
 import LoginAvatar from '../LoginAvatar/LoginAvatar';
 import LoginForm from '../LoginForm/LoginForm';
-import { getInfoApi, getUserByIdApi } from '../../api/user';
 
 const { Search } = Input;
 
 function NavHeader(props) {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const [searchType, setSearchType] = useState('issue');
     const [isShowModal, setIsShowModal] = useState(false);
 
     // 初始化登录
     useEffect(() => {
         userUserInfo();
+        async function userUserInfo() {
+            try {
+                let result = await getInfoApi();
+                let data = await getUserByIdApi(result?._id);
+
+                dispatch(initUserInfo(data || {}));
+                dispatch(changeLoginStatus(true));
+            } catch (error) {}
+        }
     }, []);
 
-    async function userUserInfo() {
-        try {
-            let result = await getInfoApi();
-            let data = await getUserByIdApi(result?._id);
+    function onChangeSelect(value) {
+        setSearchType(value);
+    }
 
-            dispatch(initUserInfo(data || {}));
-            dispatch(changeLoginStatus(true));
-        } catch (error) {}
+    function onSearch(value) {
+        if (value) {
+            navigate('/search', {
+                state: {
+                    searchType: searchType,
+                    inputValue: value
+                }
+            });
+        } else {
+            navigate('/');
+        }
     }
 
     function closeModal() {
@@ -78,12 +97,14 @@ function NavHeader(props) {
                                 label: '书籍'
                             }
                         ]}
+                        onChange={onChangeSelect}
                     />
                     <Search
                         placeholder='请输入要搜索的内容'
                         allowClear
                         enterButton='搜索'
                         size='large'
+                        onSearch={onSearch}
                     />
                 </Space.Compact>
             </div>

@@ -4,6 +4,7 @@ import AddIssue from '../pages/AddIssue/AddIssue';
 import IssueDetail from '../pages/IssueDetail/IssueDetail';
 import Book from '../pages/Book/Book';
 import Interviews from '../pages/Interviews/Interviews';
+import Search from '../pages/Search/Search';
 
 function RouterConfig() {
     return (
@@ -14,6 +15,7 @@ function RouterConfig() {
             <Route path='/issueDetail/:id' element={<IssueDetail />} />
             <Route path='/book' element={<Book />} />
             <Route path='/interviews' element={<Interviews />} />
+            <Route path='/search' element={<Search />} />
         </Routes>
     );
 }

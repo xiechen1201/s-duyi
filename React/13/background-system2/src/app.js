@@ -31,7 +31,11 @@ export async function getInitialState() {
       location.pathname = '/login';
     } else if (result.data) {
       let { data } = await getAdminByIdApi(result.data._id);
-      adminInfo = data;
+      return {
+        name: data.nickname,
+        avatar: data.avatar,
+        adminInfo: data,
+      };
     }
   }
 
@@ -44,6 +48,10 @@ export const layout = () => {
     logo: 'https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-10-18-074620.png',
     menu: {
       locale: false,
+    },
+    logout: () => {
+      localStorage.removeItem('token');
+      location.pathname = '/login';
     },
   };
 };

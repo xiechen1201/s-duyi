@@ -1,5 +1,5 @@
 import { PageContainer, ProTable } from '@ant-design/pro-components';
-import { useDispatch, useSelector } from '@umijs/max';
+import { useDispatch, useModel, useSelector } from '@umijs/max';
 import { useEffect, useState } from 'react';
 
 import { Button, Modal, Popconfirm, Switch, Tag, message } from 'antd';
@@ -9,6 +9,9 @@ function Admin() {
   // hook
   const dispatch = useDispatch();
   const stateAdmin = useSelector((state) => state.admin);
+  const {
+    initialState: { adminInfo },
+  } = useModel('@@initialState');
 
   // state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,6 +112,10 @@ function Admin() {
       key: 'enabled',
       align: 'center',
       render: (_, row) => {
+        if (row._id === adminInfo._id) {
+          return <Tag color="red">-</Tag>;
+        }
+
         return (
           <Switch
             key={row._id}

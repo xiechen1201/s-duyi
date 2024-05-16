@@ -1,12 +1,14 @@
-import { deleteUserApi, getUserByPageApi } from '@/services/user';
 import { PageContainer, ProTable } from '@ant-design/pro-components';
-import { useNavigate } from '@umijs/max';
 import { Button, Popconfirm, Switch, message } from 'antd';
+
+import { deleteUserApi, getUserByPageApi } from '@/services/user';
+import { Access, useAccess, useNavigate } from '@umijs/max';
 import { useRef, useState } from 'react';
 
 function User(props) {
   let tableRef = useRef();
   let navigate = useNavigate();
+  const access = useAccess();
 
   // state
   let [pageInfo, setPageInfo] = useState({
@@ -106,16 +108,18 @@ function User(props) {
             <Button type="link" size="small" onClick={() => onClickEdit(row)}>
               编辑
             </Button>
-            <Popconfirm
-              title="确认要删除吗？"
-              onConfirm={() => onConfirmDel(row)}
-              okText="确认"
-              cancelText="删除"
-            >
-              <Button type="link" size="small">
-                删除
-              </Button>
-            </Popconfirm>
+            <Access accessible={access.SuperAdmin}>
+              <Popconfirm
+                title="确认要删除吗？"
+                onConfirm={() => onConfirmDel(row)}
+                okText="确认"
+                cancelText="删除"
+              >
+                <Button type="link" size="small">
+                  删除
+                </Button>
+              </Popconfirm>
+            </Access>
           </div>
         );
       },

@@ -25,11 +25,13 @@ export default defineConfig({
       path: '/home',
       component: './Home',
       icon: 'HomeOutlined',
+      access: 'NormalAdmin',
     },
     {
       name: '管理员',
       path: '/admin',
       icon: 'UserOutlined',
+      access: 'SuperAdmin',
       routes: [
         {
           name: '管理员列表',
@@ -47,6 +49,7 @@ export default defineConfig({
       name: '用户',
       path: '/user',
       icon: 'TeamOutlined',
+      access: 'NormalAdmin',
       routes: [
         {
           name: '用户列表',
@@ -70,6 +73,7 @@ export default defineConfig({
       name: '书籍',
       path: '/book',
       icon: 'ReadOutlined',
+      access: 'NormalAdmin',
       routes: [
         {
           name: '书籍列表',
@@ -94,24 +98,28 @@ export default defineConfig({
       path: '/interview',
       component: './Interview',
       icon: 'EditOutlined',
+      access: 'NormalAdmin',
     },
     {
       name: '问答',
       path: '/issue',
       component: './Issue',
       icon: 'ProfileOutlined',
+      access: 'NormalAdmin',
     },
     {
       name: '评论',
       path: '/comment',
       component: './Comment',
       icon: 'CalendarOutlined',
+      access: 'NormalAdmin',
     },
     {
       name: '类型',
       path: '/type',
       component: './Type',
       icon: 'AppstoreOutlined',
+      access: 'NormalAdmin',
     },
   ],
   npmClient: 'npm',

@@ -1,0 +1,31 @@
+一级菜单					二级菜单												
+path	name	title	icon	component	path	name	title	icon	component	角色	接口URL	方法	说明	权限标识	权限说明	免登录	备注
+/user-center	UserCenter	用户中心	kefu	Layout	index	UserCenterIndex	用户中心		/views/user-center	客服	/number/iccid/getIccidInfo	GET	获取ICCID信息				
+										客服	/crm/userInfo/getOrderInfo	GET	查询订购信息				
+										客服	/crm/vac/volte	POST	开通高清语音				
+										客服	/crm/vopCtrl/queryHistory	GET	查询VOP历史				
+										客服	/crm/review/querySecondRealName	GET	二次实名认证记录				
+										客服、管理员	/crm/vac/isOrderVolte	GET	查询是否开通高清语音				
+										客服、管理员	/crm/tools/limit	POST	解限速				
+										客服、管理员	/crm/new_ocs_inter/tutuPayRemind	POST	充值消息推送				
+										客服、管理员	/crm/inform/noteInformList	GET	"短信提醒用户列表
+"				
+										客服、管理员	/crm/class_code/change	POST	网别切换				
+/actual-name	ActualName	实名制信息	shiming	Layout	index	ActualNameIndex	实名制信息		views/actual-name								
+					status	ActualNameStatus	状态		views/actual-name/status								
+/audit-open-account	AuditOpenAccount	开户审核	kaihu	Layout	index	AuditOpenAccountIndex	开户审核		views/audit-open-account								
+					detail	AuditOpenAccountDetail	详情		views/audit-open-account/detail								
+/recharge	Recharge	充值订单	gongdan	Layout	index	RechargeIndex	充值订单		views/recharge								
+/arbitrarily-list	ArbitrarilyList	畅聊卡白名单	mingdan	Layout	index	ArbitrarilyListIndex	畅聊卡白名单		views/arbitrarily-list								
+/invoice	Invoice	发票管理	fapiao	Layout	list	invoiceList	发票管理		views/invoice/list								
+/unicom-order	UnicomOrder	联通工单	gongdan	Layout	index	UnicomOrderList	联通工单		views/unicom-order/index								
+					detail	UnicomOrderDetail	工单详情		views/unicom-order/detail								
+/replace	Replace	补换卡	buhuan	Layout	index	ReplaceIndex	补换卡		views/replace		/number/workorder/batchExportReplaceCard	post	导出补换卡信息		客服		
+											/number/workorder/cancelWriteCard	post	取消补换卡		客服
+											"/number/replacecard/addRemark
+"	post	新增备注		客服		
+/increase-business	IncreaseBusiness	增值业务办理	zhengzhi	Layout	index	IncreaseBusinessIndex	增值业务办理		views/increase-business		/crm/var/operation	post	开通关闭增值业务		客服		
+/transfer-review	transferReview	过户审核	guohu	Layout	index	transferReviewIndex	过户审核		/views/transfer-review/index.vue								
+					transfer-detail	transferDetail	详情		/views/transfer-review/coms/detail.vue								
+/risk-monitor	RiskMonitor	风险监控	monitor	Layout	index	RiskMonitorIndex	风险监控		/views/risk-monitor		/crm/riskCredit/list	GET	查询风控列表		客服		
+											/crm/riskCredit/sendSms	POST	发送短信		客服		

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fetch</title>
+    </head>
+    <body>
+        <script>
+            /* // 发送 GET 请求
+            // 返回一个 Promise
+            // 当接收到服务器返回的「响应头」之后便会把状态进行落定为解决
+            fetch('https://study.duyiedu.com/api/herolist').then(function (response) {
+                // 返回一个 Response 对象
+                console.log(response);
+                console.log(response.headers.get('content-type'));
+                console.log(response.body);
+
+                // response.json() 返回一个 Promise
+                // 当接收到服务器返回的「响应体」之后便会把状态进行落定为解决
+                return response.json()
+            }).then(function (data) {
+                // 接收响应体
+                console.log(data);
+            }); */
+
+            // TODO:
+            // 发送 POST 请求
+            fetch('https://study.duyiedu.com/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: 'admin',
+                    password: 'admin'
+                })
+            })
+                .then(function (response) {
+                    console.log(response);
+                    return response.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="text" id="search" />
+        <button onclick="search()">搜索</button>
+        <div id="main"></div>
+        <script>
+            var data = ['苹果', '香蕉', '鸭梨', '西瓜', '葡萄', '橙子', '草莓', '菠萝', '芒果', '火龙果'];
+            function search() {
+                var value = document.getElementById('search').value;
+                var result = data.filter((el) => el.includes(value));
+                render(result)
+                // 状态
+                history.pushState({inputValue: value}, null, '#' + value)
+            }
+
+            function render(result) {
+                var main = document.getElementById('main');
+                main.innerHTML = result.map((el) => `<div>${el}</div>`).join('');
+            }
+
+            window.addEventListener('popstate', function (e) {
+                console.log(e.state);
+            })
+        </script>
+    </body>
+</html>

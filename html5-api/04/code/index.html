@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <style>
+            #main,
+            #main2 {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background-color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main"></div>
+        <div id="main2"></div>
+        <script>
+            /* function move() {
+                var oMain = document.getElementById('main');
+                if (oMain.offsetLeft >= 500) {
+                    return false;
+                }
+                oMain.style.left = oMain.offsetLeft + 20 + 'px';
+            }
+            setInterval(move, 10); */
+
+            // TODO:==============================
+
+            move();
+            var timer = null;
+            function move() {
+                var oMain = document.getElementById('main');
+                if (oMain.offsetLeft >= 500) {
+                    cancelAnimationFrame(timer);
+                    return;
+                }
+                oMain.style.left = oMain.offsetLeft + 20 + 'px';
+                timer = requestAnimationFrame(move);
+            }
+
+            function move2() {
+                var oMain = document.getElementById('main2');
+                if (oMain.offsetLeft >= 500) {
+                    return false;
+                }
+                oMain.style.left = oMain.offsetLeft + 20 + 'px';
+                requestAnimationFrame(move);
+            }
+            setInterval(move2, 1000 / 60);
+        </script>
+    </body>
+</html>

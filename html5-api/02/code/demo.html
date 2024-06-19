@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style type="text/css">
+            .cube {
+                margin: 0 auto;
+                margin-top: 140px;
+                position: relative;
+                width: 200px;
+                height: 200px;
+                transform-style: preserve-3d;
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            .face {
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                text-align: center;
+                font-size: 30px;
+                line-height: 200px;
+                color: white;
+                border: 1pxsolidblack;
+            }
+            .front {
+                transform: rotateY(0deg) translateZ(100px);
+            }
+            .back {
+                transform: rotateX(180deg) translateZ(100px);
+            }
+            .right {
+                transform: rotateY(90deg) translateZ(100px);
+            }
+            .left {
+                transform: rotateY(-90deg) translateZ(100px);
+            }
+            .top {
+                transform: rotateX(90deg) translateZ(100px);
+            }
+            .bottom {
+                transform: rotateX(-90deg) translateZ(100px);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="cube">
+            <div class="face front">Front</div>
+            <div class="face back">Back</div>
+            <div class="face right">Right</div>
+            <div class="face left">Left</div>
+            <div class="face top">Top</div>
+            <div class="face bottom">Bottom</div>
+        </div>
+        <script>
+            //检测浏览器是否支持DeviceOrientation事件
+            if (window.DeviceOrientationEvent) {
+                //添加事件监听器
+                window.addEventListener('deviceorientation', function (event) {
+                    //获取设备的方向信息
+                    var alpha = event.alpha; //设备围绕Z轴旋转的度数，即设备左右旋转
+                    var beta = event.beta; //设备围绕X轴旋转的度数，即设备前后倾斜
+                    var gamma = event.gamma; //设备围绕Y轴旋转的度数，即设备侧倾斜 //获取立方体元素
+                    var cube = document.querySelector('.cube'); //更新立方体的旋转
+
+                    cube.style.transform =
+                        'rotateZ(' +
+                        alpha +
+                        'deg)' +
+                        'rotateX(' +
+                        beta +
+                        'deg)' +
+                        'rotateY(' +
+                        gamma +
+                        'deg)';
+                });
+            } else {
+                alert('你的浏览器不支持DeviceOrientation');
+            }
+        </script>
+    </body>
+</html>

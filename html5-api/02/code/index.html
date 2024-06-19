@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>
+            // 监听设备方向变化
+            window.addEventListener('deviceorientation', function (event) {
+                console.log(event);
+                document.getElementById('root').innerHTML =
+                    'alpha: ' +
+                    event.alpha +
+                    '<br>' +
+                    'beta: ' +
+                    event.beta +
+                    '<br>' +
+                    'gamma: ' +
+                    event.gamma;
+                // event.alpha 绕X轴旋转的角度（水平向右为正）
+                // event.beta 绕Y轴旋转的角度（垂直向下为正）
+                // event.gamma 绕Z轴旋转的角度（垂直屏幕为正）
+            });
+        </script>
+    </body>
+</html>

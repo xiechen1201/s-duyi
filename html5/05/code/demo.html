@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <canvas
+            id="canvas"
+            width="500"
+            height="500"
+            style="border: 1px solid #000"></canvas>
+        <script>
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+
+            /*  ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.lineTo(200, 100);
+            ctx.lineTo(200, 200);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke(); */
+
+            /* ctx.beginPath();
+            ctx.lineWidth = 10;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.moveTo(100, 250);
+            ctx.lineTo(200, 250);
+            ctx.lineTo(200, 350);
+            ctx.stroke(); */
+
+            /* ctx.rect(100,100, 300, 300);
+            ctx.fill();
+            ctx.stroke(); */
+
+            /* ctx.strokeRect(100, 100, 200, 200); */
+
+            /* ctx.fillRect(100, 100, 200, 200);
+            ctx.clearRect(100, 100, 100, 100); */
+
+            /* ctx.arc(200, 200, 100, 0, 1.8 * Math.PI, false);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke(); */
+
+            /* ctx.moveTo(100, 100);
+            ctx.arcTo(200, 100, 200, 400, 50);
+            ctx.stroke(); */
+
+            /* ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.quadraticCurveTo(200, 200, 300, 100);
+            ctx.stroke(); */
+
+            /* ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.bezierCurveTo(200, 200, 300, 100, 400, 200);
+            ctx.stroke(); */
+
+            /* ctx.beginPath();
+            ctx.translate(100, 100);
+            ctx.moveTo(0, 0);
+            ctx.rotate(Math.PI / 10);
+            ctx.lineWidth = 5;
+            ctx.lineTo(100, 0);
+            ctx.stroke(); */
+
+            /* ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.scale(2, 2);
+            ctx.strokeRect(100, 100, 100, 100); */
+
+            /* ctx.beginPath();
+            ctx.save(); // 存储当前的坐标平移、旋转、缩放状态，写在这里也就是说无平移，无旋转、无缩放！
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 4);
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 4);
+            ctx.strokeRect(0, 0, 100, 50);
+
+            ctx.beginPath();
+            ctx.restore(); // 恢复到之前保存的坐标评议和旋转状态
+            ctx.fillRect(200, 0, 100, 50); */
+
+            /* var img = new Image();
+            img.src = './sky.png';
+            img.onload = function () {
+                ctx.beginPath();
+                ctx.translate(100, 100);
+
+                // 填充图片背景
+                var bg = ctx.createPattern(img, 'no-repeat');
+                ctx.fillStyle = bg;
+
+                // ctx.fillStyle = "red"; // 填充颜色
+                ctx.fillRect(0, 0, 400, 400);
+            }; */
+
+            /* ctx.beginPath();
+            var bg = ctx.createLinearGradient(0, 0, 500, 500);
+            // 取值 0~1 之间
+            bg.addColorStop(0, 'red');
+            bg.addColorStop(0.5, 'blue');
+            bg.addColorStop(1, 'white');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 500, 500); */
+
+            /*  ctx.beginPath();
+            // (x1, y1, r1, x2, y2, r2)
+            var bg = ctx.createRadialGradient(60, 60, 30, 100, 100, 100);
+            bg.addColorStop(0, 'red');
+            bg.addColorStop(0.5, 'blue');
+            bg.addColorStop(1, 'white');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 200, 200); */
+
+            /* ctx.beginPath();
+
+            ctx.shadowColor = '#333';
+            ctx.shadowBlur = 5; // 阴影大小
+            ctx.shadowOffsetX = 10; // 阴影水平偏移量
+            ctx.shadowOffsetY = 10; // 阴影垂直偏移量
+
+            ctx.strokeRect(100, 100, 200, 200); */
+
+            /* ctx.beginPath();
+            ctx.font = '50px 微软雅黑';
+            // strokeText 相当于文字描边
+            ctx.strokeText('有理想', 200, 100);
+
+            // fillText 相当于普通的文字
+            ctx.fillStyle = 'red';
+            ctx.fillText('youlixiang', 200, 200); */
+        </script>
+    </body>
+</html>

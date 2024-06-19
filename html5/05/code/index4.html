@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- canvas 标签 -->
+        <canvas
+            style="border: 1px solid #333"
+            id="canvas"
+            width="500px"
+            height="500px"></canvas>
+        <script>
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            // translate 和 rotate 对全局有影响的
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 4);
+            ctx.strokeRect(0, 0, 100, 50);
+
+            ctx.beginPath();
+            ctx.fillRect(200, 0, 100, 50) */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.save(); // 存储当前的坐标平移、旋转、缩放状态，写在这里也就是说无平移，无旋转、无缩放！
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 4);    
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 4);
+            ctx.strokeRect(0, 0, 100, 50);
+
+            ctx.beginPath();
+            ctx.restore(); // 恢复到之前保存的坐标评议和旋转状态
+            ctx.fillRect(200, 0, 100, 50); */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            var img = new Image();
+            img.src = './demo.jpg';
+            img.onload = function () {
+                ctx.beginPath();
+                var bg = ctx.createPattern(img, 'no-repeat');
+                // ctx.fillStyle = "red";
+                ctx.fillStyle = bg;
+                ctx.fillRect(0, 0, 500, 500);
+            }; */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            var bg = ctx.createLinearGradient(0, 0, 500, 500);
+            // 取值 0~1 之间
+            bg.addColorStop(0, 'red');
+            bg.addColorStop(0.5, 'blue');
+            bg.addColorStop(1, 'white');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 500, 500); */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            console.dir(oCanvas);
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            // (x1, y1, r1, x2, y2, r2)
+            var bg = ctx.createRadialGradient(100, 100, 50, 100, 100, 100);
+            bg.addColorStop(0, 'red');
+            bg.addColorStop(0.5, 'blue');
+            bg.addColorStop(1, 'white');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 200, 200); */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+
+            ctx.shadowColor = 'red';
+            ctx.shadowBlur = 15; // 阴影大小
+            ctx.shadowOffsetX = 10; // 阴影水平偏移量
+            ctx.shadowOffsetY = 10; // 阴影垂直偏移量
+
+            ctx.strokeRect(100, 100, 200, 200); */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.font = '50px 苹方'; 
+            // strokeText 相当于文字描边
+            ctx.strokeText('有理想', 200, 100);
+
+            // fillText 相当于普通的文字
+            ctx.fillStyle = 'red';
+            ctx.fillText('youlixiang', 300, 200); */
+
+            // TODO:========================================
+
+            /* var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.lineWidth = 15;
+            ctx.moveTo(100, 100);
+            ctx.lineTo(200, 100);
+
+            // butt（默认）、round、square
+            // square 和 butt 很相似，只是在 butt 的基础上左右两端都加上了一个方块
+            ctx.lineCap = 'round';
+
+            ctx.stroke(); */
+
+            // TODO:========================================
+
+            var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.lineWidth = 15;
+            ctx.moveTo(100, 100);
+            ctx.lineTo(200, 100);
+            ctx.lineTo(100, 150);
+            // round、bevel、miter（默认）
+            ctx.lineJoin = 'miter'
+            ctx.stroke()
+        </script>
+    </body>
+</html>

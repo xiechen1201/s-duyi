@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #svg {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="svg" width="500" height="500">
+            <!-- M100 100 移动到哪个点，L100 100 画一条线 -->
+            <!-- L 和 l 的区别：L是绝对位置，l表示相对位置 -->
+            <!-- Z 不区分，表示闭合区间 -->
+            <!-- <path d="M100 100 L300 100 L300 300 L100 300 Z" fill="#f00" stroke="#000" stroke-width="5"></path> -->
+
+            <!-- H水平方向 V垂直方向 -->
+            <path
+                d="M100 100 H200 V200"
+                fill="#f00"
+                stroke="#000"
+                stroke-width="1"></path>
+        </svg>
+    </body>
+</html>

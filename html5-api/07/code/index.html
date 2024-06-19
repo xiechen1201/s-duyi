@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /* // 页面的东西就是主线程
+            console.log('=======1');
+            console.log('=======2');
+            var a = 10000;
+            var result = 0;
+            for (var i = 0; i < a; i++) {
+                result += i;
+            }
+
+            var woker = new Worker('worker.js');
+            woker.postMessage({
+                num: a
+            });
+
+            console.log(result);
+            console.log('=======3');
+            console.log('=======4'); */
+
+            // TODO:
+
+            // 页面的东西就是主线程
+            console.time("time")
+            console.log('=======1');
+            console.log('=======2');
+
+            var a = 10000;
+            var woker = new Worker('worker.js');
+            woker.postMessage({
+                num: a
+            });
+            woker.onmessage = function (e) {
+                console.log(e.data);
+            };
+
+            // 停止 woker
+            woker.terminate()
+
+            console.log('=======3');
+            console.log('=======4');
+            console.timeEnd("time")
+        </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #svg {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="svg" width="500" height="500">
+            <!-- 圆 -->
+            <!-- 坐标 半径 填充 -->
+            <circle cx="100" cy="100" r="50" fill="red" />
+            <!-- 半圆 -->
+            <!-- 坐标 半径1 半径2 -->
+            <ellipse cx="200" cy="100" rx="50" ry="25" fill="none" stroke="black" />
+            <!-- 折线 -->
+            <!-- points='坐标1 坐标2，坐标3 坐标4' -->
+            <polyline
+                points="100 100,100 200,100 300,200 400"
+                fill="none"
+                stroke="black" />
+        </svg>
+    </body>
+</html>

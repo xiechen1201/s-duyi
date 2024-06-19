@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #svg {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="svg" width="500" height="500">
+            <!-- polyline 是画到哪里就停止了，polygon 是画完之后还会进行闭合 -->
+            <polygon
+                points="100,100 200,200 300,100"
+                fill="red"
+                stroke="black"
+                stroke-width="3"></polygon>
+            <text x="50" y="50" stroke="blue" strokeWidth="5">youlixiang</text>
+        </svg>
+    </body>
+</html>

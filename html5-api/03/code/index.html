@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>
+            window.addEventListener('devicemotion', function (event) {
+                console.log(event);
+                // event.acceleration.x 表示x轴方向上的加速度
+                // event.acceleration.y 表示y轴方向上的加速度
+                // event.acceleration.z 表示z轴方向上的加速度
+                document.getElementById("root").innerHTML = event.acceleration.x + " " + event.acceleration.y + " " + event.acceleration.z;
+            });
+        </script>
+    </body>
+</html>

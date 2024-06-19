@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #svg {
+                border: 1px solid #ccc;
+            }
+            .line {
+                stroke-dasharray: 400px;
+                stroke-dashoffset: 0;
+                animation: move 0.5s linear infinite alternate;
+            }
+            @keyframes move {
+                0% {
+                    stroke-dashoffset: 400px;
+                }
+                100% {
+                    stroke-dashoffset: 0px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <svg id="svg" width="500" height="500">
+            <!-- stroke-dasharray="一个值表示一个节点的宽度，两个值表示一个节点的宽度加一个间隔宽度" -->
+            <line
+                x1="100"
+                y1="100"
+                x2="400"
+                y2="100"
+                stroke="black"
+                stroke-width="10"
+                stroke-dasharray="400px"
+                stroke-dashoffset="20px"></line>
+        </svg>
+        <svg id="svg" width="500" height="500">
+            <line
+                class="line"
+                x1="100"
+                y1="100"
+                x2="400"
+                y2="100"
+                stroke="black"
+                stroke-width="10"></line>
+        </svg>
+    </body>
+</html>

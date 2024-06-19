@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- canvas 标签 -->
+        <canvas
+            style="border: 1px solid #333"
+            id="canvas"
+            width="500px"
+            height="500px"></canvas>
+        <script>
+            /* var oCanvas = document.getElementById('canvas');
+    // 获取画布上下文
+    var ctx = oCanvas.getContext('2d');
+    // 选择一个起点
+    ctx.moveTo(100, 100);
+
+    // 画一条线
+    ctx.lineTo(200, 100);
+    ctx.lineTo(200, 200);
+    // 闭合路径 类似于 ctx.lineTo(100, 100);
+    ctx.closePath();
+
+    // 填充颜色
+    // ctx.fill();
+
+    // 设置线条的宽度，相当于对所有的线条生效
+    // 这里有个概念：
+    // 虽然调用了两次 lineTo 方法，但是相当于一笔画成的图形，如果想要开启新的笔迹，需要调用 beginPath()
+    ctx.lineWidth = 5;
+
+    // 进行绘画
+    ctx.stroke(); */
+
+            // TODO:====================
+            /* var oCanvas = document.getElementById('canvas');
+    var ctx = oCanvas.getContext('2d');
+
+    ctx.moveTo(100, 100);
+    ctx.lineTo(200, 100);
+    ctx.stroke();
+
+    // 开始新的路径
+    ctx.beginPath();
+    ctx.moveTo(200, 100);
+    ctx.lineWidth = 5;
+    ctx.lineTo(200, 200);
+    ctx.lineTo(300, 200);
+
+    // 无效，因为是针对一笔完成的路径，现在是两笔完成的路径
+    // 只针对当前的 path 进行闭合
+    ctx.closePath();
+
+    ctx.stroke(); */
+
+            // TODO:====================
+            var oCanvas = document.getElementById('canvas');
+            var ctx = oCanvas.getContext('2d');
+
+            // // 画矩形（x，y，width，height）
+            // ctx.rect(100, 100, 150, 150);
+            // // 填充
+            // ctx.fill();
+            // ctx.stroke();
+
+            // 绘制并填充一个矩形
+            // ctx.strokeRect(100, 100, 200, 100);
+
+            // 绘制一个矩形
+            ctx.fillRect(100, 100, 200, 100);
+        </script>
+    </body>
+</html>

@@ -26,11 +26,12 @@ console.log(a); */
 for (var i = 0; i < 10; i++) {
     var oBtn = document.createElement('button');
     oBtn.innerText = '按钮' + i;
-    oBtn.appendChild(oBtn);
-    oBox.onclick = function () {
+    oBtn.onclick = function () {
         // 点击全部输出的是9
         console.log(i);
     };
+
+    oBox.appendChild(oBtn);
 } */
 // 这是因为 var i; 存在变量提升，每次使用的都是同一个 i
 

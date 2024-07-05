@@ -43,7 +43,7 @@ oBtn.onclick = function () {
     oBox.innerHTML = String.raw`${oTxt.value}`;
 }; */
 
-/* let oTxt = document.getElementById('txt');
+let oTxt = document.getElementById('txt');
 let oBtn = document.getElementById('btn');
 let oBox = document.getElementById('container');
 
@@ -65,4 +65,4 @@ function safe(parts) {
     }
 
     return str;
-} */
+}

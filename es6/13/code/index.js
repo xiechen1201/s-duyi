@@ -65,7 +65,7 @@ fetch(URL, {
   headers
 }).then((res) => console.log(res)); */
 
-/* fetch(URL).then((res) => {
+/* fetch('https://v.api.aa1.cn/api/bilibili-rs/').then((res) => {
   console.log(res);
   console.log(res.headers.has('content-type'));
   console.log(res.headers.get('content-type'));

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <body>
+      <button id="updateButton">更新内容</button>
+      <div id="content"></div>
+    </body>
+    <script>
+      // 通过 innerHTML 来更新 content 里面的内容
+      document.addEventListener('DOMContentLoaded', function () {
+        const updateButton = document.getElementById('updateButton');
+        const contentDiv = document.getElementById('content');
+
+        updateButton.addEventListener('click', function () {
+          const currentTime = new Date().toTimeString().split(' ')[0]; // 获取当前时间
+          contentDiv.innerHTML = `
+            <div class="message">
+                <div class="info">
+                    <span>张三</span>
+                    <span>${currentTime}</span>
+                </div>
+                <p>这是一堂讲解虚拟DOM的课</p>
+                <div class="btn">
+                    <a href="#" class="removeBtn" _id="1">删除</a>
+                </div>
+            </div>`;
+        });
+      });
+    </script>
+  </body>
+</html>

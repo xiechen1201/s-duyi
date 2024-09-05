@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue3</title>
+    <style>
+      .user-card {
+        display: flex;
+        align-items: center;
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      .user-info h2 {
+        margin: 0;
+        font-size: 20px;
+        color: #333;
+      }
+      .user-info p {
+        margin: 5px 0 0;
+        font-size: 16px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 书写模板 -->
+    <div id="app">
+      <user-card :name="name" :email="email" :avatar-url="avatarUrl" />
+    </div>
+
+    <template id="user-card-template">
+      <div class="user-card">
+        <img :src="avatarUrl" alt="User avatar" class="avatar" />
+        <div class="user-info">
+          <h2>{{ name }}</h2>
+          <p>{{ email }}</p>
+        </div>
+      </div>
+    </template>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const UserCard = {
+        name: 'UserCard',
+        props: {
+          name: String,
+          email: String,
+          avatarUrl: String
+        },
+        template: '#user-card-template'
+      };
+
+      createApp({
+        components: {
+          UserCard
+        },
+        data() {
+          return {
+            name: 'John Doe',
+            email: 'john@example',
+            avatarUrl: './yinshi.jpg'
+          };
+        }
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 import { createApp, h, defineComponent } from 'vue';
 
-/* const UserCard = defineComponent({
+const UserCard = defineComponent({
   name: 'UserCard',
   props: {
     name: String,
@@ -29,9 +29,9 @@ import { createApp, h, defineComponent } from 'vue';
         ]
       );
   }
-}); */
+});
 
-const UserCard = {
+/* const UserCard = {
   name: 'UserCard',
   props: {
     name: String,
@@ -59,7 +59,7 @@ const UserCard = {
       ]
     );
   }
-}
+} */
 
 console.log(UserCard)
 

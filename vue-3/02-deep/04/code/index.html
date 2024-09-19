@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>defineProperty</title>
+  </head>
+  <body>
+    <script>
+      function Student() {
+        let stuName = '张三';
+        Object.defineProperty(this, 'name', {
+          get() {
+            return stuName;
+          },
+          set(value) {
+            if (!isNaN(value)) {
+              stuName = '张三';
+            } else {
+              stuName = value;
+            }
+          }
+        });
+      }
+
+      const stu = new Student();
+      console.log(stu.name);
+      stu.name = '李四';
+      console.log(stu.name);
+      stu.name = 100;
+      console.log(stu.name);
+    </script>
+  </body>
+</html>

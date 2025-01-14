@@ -74,7 +74,7 @@ class Child extends Father {
 
 // 如何调用父类的方法，然后再拓展一下
 
-class Father {
+/* class Father {
     constructor(public name: string) {}
 
     info() {
@@ -93,3 +93,4 @@ class Child extends Father {
         return this.name;
     }
 }
+ */

@@ -10,7 +10,6 @@ class SimpleSet {
         this.elements = new Map();
     }
 
-    // add(element: number): SimpleSet {
     add(element: number): this {
         this.elements.set(element, true);
         return this;
@@ -45,4 +44,3 @@ let myMutableSet = new MutableSet();
 
 // 将 add 方法返回值改为 this，可以链式调用子类的方法
 myMutableSet.add(1).add(2).add(3).show(); // ✅
-

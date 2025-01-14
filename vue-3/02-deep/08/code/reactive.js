@@ -1,15 +1,16 @@
-/**
- * @fileoverview 入口文件，提供一个 reactive API，该方法接收一个对象，返回一个 Proxy 对象。
- */
+/* 
+    核心文件，入口文件，会提供一个 reactive API 函数
+    方法接收一个对象
+*/
 
-import handlers from './handlers/index.js';
+import handlers from "./handlers/index.js";
 
 /**
- * @param {Object} target 目标对象
- * @returns {Proxy} Proxy 对象
+ * 响应式对象
+ * @param {Object} target
+ * @returns {Proxy}
  */
-function reactive(target) {
-  return new Proxy(target, handlers);
+export function reactive(target) {
+    const proxy = new Proxy(target, handlers);
+    return proxy;
 }
-
-export { reactive };

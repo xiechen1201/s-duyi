@@ -16,10 +16,17 @@ export default [
 
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),
-  
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
   skipFormatting,
+
+  // 覆盖 pluginVue 的规则
+  {
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
 ]

@@ -16,38 +16,75 @@ const routes = [
       {
         path: "select-group",
         name: "select-group",
+        redirect: "/materials/select-group/single-select",
         meta: { title: "选择组" },
-        component: () => import("@/views/MaterialsView/SelectGroup.vue"),
+        component: () => import("@/views/MaterialsView/SelectGroupView.vue"),
+        children: [
+          {
+            path: "single-select",
+            name: "single-select",
+            meta: { title: "单选题" },
+            component: () =>
+              import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue"),
+          },
+          {
+            path: "multi-select",
+            name: "multi-select",
+            meta: { title: "多选题" },
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/MultiSelect.vue"),
+          },
+          {
+            path: "option-select",
+            name: "option-select",
+            meta: { title: "选项选择" },
+            component: () =>
+              import("@/components/SurveyComs/Materials/SelectComs/OptionSelect.vue"),
+          },
+          {
+            path: "single-pic-select",
+            name: "single-pic-select",
+            meta: { title: "单图选择" },
+            component: () =>
+              import("@/components/SurveyComs/Materials/SelectComs/SinglePicSelect.vue"),
+          },
+          {
+            path: "multi-pic-select",
+            name: "multi-pic-select",
+            meta: { title: "多图选择" },
+            component: () =>
+              import("@/components/SurveyComs/Materials/SelectComs/MultiPicSelect.vue"),
+          },
+        ],
       },
       {
         path: "input-group",
         name: "input-group",
         meta: { title: "输入组" },
-        component: () => import("@/views/MaterialsView/InputGroup.vue"),
+        component: () => import("@/views/MaterialsView/InputGroupView.vue"),
       },
       {
         path: "advanced-group",
         name: "advanced-group",
         meta: { title: "高级组" },
-        component: () => import("@/views/MaterialsView/AdvancedGroup.vue"),
+        component: () => import("@/views/MaterialsView/AdvancedGroupView.vue"),
       },
       {
         path: "note-group",
         name: "note-group",
         meta: { title: "笔记组" },
-        component: () => import("@/views/MaterialsView/NoteGroup.vue"),
+        component: () => import("@/views/MaterialsView/NoteGroupView.vue"),
       },
       {
         path: "personal-info-group",
         name: "personal-info-group",
         meta: { title: "个人信息组" },
-        component: () => import("@/views/MaterialsView/PersonalInfoGroup.vue"),
+        component: () => import("@/views/MaterialsView/PersonalInfoGroupView.vue"),
       },
       {
         path: "contact-group",
         name: "contact-group",
         meta: { title: "联系组" },
-        component: () => import("@/views/MaterialsView/ContactGroup.vue"),
+        component: () => import("@/views/MaterialsView/ContactGroupView.vue"),
       },
     ],
   },

@@ -6,14 +6,30 @@
     </div>
 
     <!-- 显示对应的业务组件 -->
-    <div class="center">显示对应的业务组件</div>
+    <div class="center">
+      <RouterView v-slot="{ Component }">
+        <component :is="Component" :seriaNum="1" :status />
+      </RouterView>
+    </div>
 
     <!-- 编辑面板 -->
     <div class="right">编辑面板</div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import { useMaterial } from "@/stores/material";
+
+const store = useMaterial();
+
+type ComsKeys = keyof typeof store.coms;
+
+const status = computed(() => {
+  const comInfo = store.coms[store.currentMaterial as ComsKeys];
+  return comInfo.status;
+});
+</script>
 
 <style scoped lang="scss">
 .layout-container {

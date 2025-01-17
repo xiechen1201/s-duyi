@@ -8,27 +8,103 @@
     <!-- 显示对应的业务组件 -->
     <div class="center">
       <RouterView v-slot="{ Component }">
-        <component :is="Component" :seriaNum="1" :status />
+        <component :is="Component" :seriaNum="1" :status="currentComStatus" />
       </RouterView>
     </div>
 
     <!-- 编辑面板 -->
-    <div class="right">编辑面板</div>
+    <div class="right">
+      <EditPannel :com="currentCom" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import EditPannel from "@/components/SurveyComs/EditItems/EditPannel.vue";
+
+import { computed, provide } from "vue";
+import { ElMessage } from "element-plus";
 import { useMaterial } from "@/stores/material";
 
 const store = useMaterial();
 
 type ComsKeys = keyof typeof store.coms;
 
-const status = computed(() => {
+const currentCom = computed(() => {
   const comInfo = store.coms[store.currentMaterial as ComsKeys];
-  return comInfo.status;
+  return comInfo;
 });
+
+const currentComStatus = computed(() => {
+  return currentCom.value.status;
+});
+
+provide("updateStatus", updateStatus);
+// 更新仓库组件状态
+function updateStatus(configKey: string, payload?: number | string | boolean | object) {
+  switch (configKey) {
+    case "title":
+    case "desc":
+      if (typeof payload !== "string") {
+        console.error("Invalid payload type for 'type' or 'desc'. Expected string.");
+        return;
+      }
+      store.setTextStatus(currentCom.value.status[configKey], payload);
+      break;
+    case "options":
+      if (payload !== undefined && typeof payload === "number") {
+        // 删除
+        const result = store.removeOption(currentCom.value.status[configKey], payload);
+        if (result) {
+          ElMessage.success("删除成功");
+        } else {
+          ElMessage.error("至少保留两个选项");
+        }
+      } else {
+        // 新增
+        store.addOption(currentCom.value.status[configKey]);
+      }
+      break;
+    case "position":
+      if (typeof payload !== "number") {
+        console.error("Invalid payload type for 'position'. Expected number.");
+        return;
+      }
+      store.setPosition(currentCom.value.status[configKey], payload);
+    case "titleSize":
+    case "descSize":
+      if (typeof payload !== "number") {
+        console.error("Invalid payload type for 'titleSize' or 'descSize'. Expected number.");
+        return;
+      }
+      store.setSize(currentCom.value.status[configKey], payload);
+      break;
+    case "titleWeight":
+    case "descWeight":
+      if (typeof payload !== "number") {
+        console.error("Invalid payload type for 'titleWeight' or 'descWeight'. Expected number.");
+        return;
+      }
+      store.setWeight(currentCom.value.status[configKey], payload);
+      break;
+    case "titleItalic":
+    case "descItalic":
+      if (typeof payload !== "number") {
+        console.error("Invalid payload type for 'titleItalic' or 'descItalic'. Expected number.");
+        return;
+      }
+      store.setItalic(currentCom.value.status[configKey], payload);
+      break;
+    case "titleColor":
+    case "descColor":
+      if (typeof payload !== "string") {
+        console.error("Invalid payload type for 'titleColor' or 'descColor'. Expected string.");
+        return;
+      }
+      store.setColor(currentCom.value.status[configKey], payload);
+      break;
+  }
+}
 </script>
 
 <style scoped lang="scss">

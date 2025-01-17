@@ -7,11 +7,17 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ButtonGroup: typeof import('./src/components/SurveyComs/EditItems/coms/ButtonGroup.vue')['default']
     ColorEditor: typeof import('./src/components/SurveyComs/EditItems/ColorEditor.vue')['default']
     DescEditor: typeof import('./src/components/SurveyComs/EditItems/DescEditor.vue')['default']
+    EditPannel: typeof import('./src/components/SurveyComs/EditItems/EditPannel.vue')['default']
+    EditPanner: typeof import('./src/components/SurveyComs/EditItems/EditPanner.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElTable: typeof import('element-plus/es')['ElTable']

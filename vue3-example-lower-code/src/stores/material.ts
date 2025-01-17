@@ -5,6 +5,17 @@
 import { defineStore } from "pinia";
 import { defaultStatusMap } from "@/configs/default-status/default-status-map";
 
+import {
+  setTextStatus,
+  addOption,
+  removeOption,
+  setPosition,
+  setSize,
+  setWeight,
+  setItalic,
+  setColor,
+} from "./actions";
+
 export const useMaterial = defineStore("useMaterial", {
   state: () => ({
     // 当前选中的组件
@@ -15,4 +26,15 @@ export const useMaterial = defineStore("useMaterial", {
       // "multi-select": {},
     },
   }),
+
+  actions: {
+    setTextStatus,
+    addOption,
+    removeOption,
+    setPosition,
+    setSize,
+    setWeight,
+    setItalic,
+    setColor,
+  },
 });

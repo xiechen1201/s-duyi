@@ -54,8 +54,6 @@ const computedState = computed(() => ({
   titleColor: getTextStatus(props.status.titleColor),
   descColor: getTextStatus(props.status.descColor),
 }));
-
-console.log(computedState.value);
 </script>
 
 <style scoped lang="scss"></style>

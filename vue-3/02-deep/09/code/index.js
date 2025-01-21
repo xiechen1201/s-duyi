@@ -1,35 +1,63 @@
-/**
- * @fileoverview 测试文件
- */
-
-import { reactive } from './reactive.js';
+import { reactive } from "./reactive.js";
 
 const obj = {
-  a: 1,
-  b: 2,
-  c: {
-    name: '张三',
-    age: 18
-  }
+    name: "张三",
+    age: 18,
+    info: {
+        address: "北京",
+        job: {
+            name: "前端工程师",
+            salary: 10000
+        }
+    }
 };
 
-const arr = [1, obj, 3];
-const arrState = reactive(arr);
+const proxyObj = reactive(obj);
 
-// 读取行为
-// arrState[1];
-// arrState.length;
-// for (const key in arrState) {
-//   console.log(key);
+// 读取属性
+// proxyObj.name;
+// skillProxy;
+
+// 设置属性
+// proxyObj.age = 20;
+
+// 新增属性
+// proxyObj.gender = "男";
+
+// 删除属性
+// delete proxyObj.info.address;
+// delete skillProxy.seniority;
+
+// 是否存在属性
+// "info" in proxyObj;
+
+// 遍历属性
+// for (const key in proxyObj) {
 // }
-// arrState.includes(1);
-// console.log(arrState.indexOf(1));
-// console.log(arrState.includes(obj));
 
-// 写入行为
-// arrState[0] = 100;
-// arrState[5] = 400; // 这里会涉及到隐式的改变长度
-// arrState.length = 100;
-// arrState.length = 1;
+let skill = ["html", "css", "js", obj];
+let skillProxy = reactive(skill);
 
-arrState.push(4);
+// 数组的操作
+
+// === 读取行为 ===
+// skillProxy[0];
+// skillProxy.length;
+// for (const index in skillProxy) {
+//     skillProxy[index];
+// }
+
+// 方法操作
+// skillProxy.includes("html");
+// skillProxy.indexOf("js");
+// skillProxy.push("vue");
+
+// 查找对象
+// console.log(skillProxy.includes(obj));
+
+// === 写入行为 ===
+// skillProxy[0] = "vue";
+// skillProxy[4] = "vue";
+
+// skillProxy.length = 5;
+// skillProxy.length = 2;

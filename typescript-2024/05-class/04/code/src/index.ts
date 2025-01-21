@@ -14,7 +14,7 @@ class Animal {
     // 静态方法
     static showKingdom(): string {
         // this 指向类本身，写法不太好，最好使用 Animal，而不是 this
-        // this: typeof Animal
+        // 🤔 this: typeof Animal
         console.log(this.kingdom);
         return `The kingdom is ${Animal.kingdom}`;
     }

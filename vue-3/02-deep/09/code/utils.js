@@ -1,46 +1,41 @@
 /**
- * @fileoverview 提供工具方法
- */
-
-/**
  * 收集依赖的操作类型
  */
-const trackOpTypes = {
-  GET: 'get',
-  HAS: 'has',
-  ITERATE: 'iterate'
+export const TrackOpTypes = {
+    GET: "get",
+    HAS: "has",
+    ITERATE: "iterate"
 };
 
 /**
  * 触发器的操作类型
  */
-const triggerOpTypes = {
-  SET: 'set',
-  ADD: 'add',
-  DELETE: 'delete'
+export const TriggerOpTypes = {
+    SET: "set",
+    ADD: "add",
+    DELETE: "delete"
 };
 
 /**
- * @description 判断是否为对象
- * @param {*} value 要判断的值
+ * @description 判断是否是对象
+ * @param {*} target
  * @returns {Boolean}
  */
-function isObject(value) {
-  return value !== null && typeof value === 'object';
+export function isObject(target) {
+    return typeof target === "object" && target !== null;
 }
 
 /**
- * @description 判断值是否发生变化
- * @param {*} oldValue
- * @param {*} newValue
+ * @description 判断两个值是否相等
+ * @param {*} oldVal
+ * @param {*} newVal
  * @returns {Boolean}
  */
-function hasChange(oldValue, newValue) {
-  // 使用 Object.is 更加的严谨，例如 NaN = NaN
-  return !Object.is(oldValue, newValue);
+export function hasChanged(oldVal, newVal) {
+    return Object.is(oldVal, newVal);
 }
 
-// 特殊的标识
-const RAW = Symbol('raw');
-
-export { trackOpTypes, triggerOpTypes, isObject, hasChange, RAW };
+/**
+ * @description 原始数据
+ */
+export const RAW = Symbol("RAW");

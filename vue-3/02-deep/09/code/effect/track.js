@@ -1,33 +1,50 @@
-import { trackOpTypes } from '../utils.js';
+/* 
+    依赖收集器
+*/
 
-// 控制是否需要进行依赖收集的开关
+import { TrackOpTypes } from "../utils.js";
+
+/**
+ * 控制是否需要进行依赖收集
+ */
 let shouldTrack = true;
 
-function pauseTracking() {
-  shouldTrack = false;
-}
-
-function resumeTracking() {
-  shouldTrack = true;
+/**
+ * @description 暂停依赖收集
+ */
+export function pauseTracking() {
+    shouldTrack = false;
 }
 
 /**
- * @description 收集器，收集依赖
- * @param {*} target 目标对象
- * @param {*} type 进行的操作类型
- * @param {*} key 属性
+ * @description 恢复依赖收集
  */
-export default function (target, type, key) {
-  if (!shouldTrack) return;
-
-  // 如果是遍历操作，没有 key 参数
-  if (type === trackOpTypes.ITERATE) {
-    // console.log(`收集器：原始对象为`, target);
-    console.log(`收集器：代理对象被${type}了`);
-  } else {
-    // console.log(`收集器：原始对象为`, target);
-    console.log(`收集器：代理对象的${key}属性被${type}了`);
-  }
+export function resumeTracking() {
+    shouldTrack = true;
 }
 
-export { pauseTracking, resumeTracking };
+/**
+ * @description 用于收集依赖
+ * @param {*} target 原始对象
+ * @param {*} type 操作类型
+ * @param {*} key 对象 Key
+ */
+export default function (target, type, key) {
+    // 如果不需要收集依赖，直接返回
+    if (!shouldTrack) {
+        return;
+    }
+
+    // 如果是 ITERATE 操作，这个时候没有 key
+    if (type === TrackOpTypes.ITERATE) {
+        console.log(
+            `>>> 依赖收集器：${JSON.stringify(target)} >>> Type：${type}`
+        );
+    } else {
+        console.log(
+            `>>> 依赖收集器：${JSON.stringify(
+                target
+            )} >>> Type：${type} >>> Key：${key}`
+        );
+    }
+}

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useMaterial } from "@/stores/material";
 
 const routes = [
   {
@@ -98,6 +99,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to) => {
+  // 尽针对组件市场进行跳转
+  if (to.path.startsWith("/materials")) {
+    const store = useMaterial();
+    store.setCurrentMaterial(to.name as string);
+  }
 });
 
 export default router;

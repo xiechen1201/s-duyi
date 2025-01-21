@@ -26,6 +26,9 @@ import { computed, provide } from "vue";
 import { ElMessage } from "element-plus";
 import { useMaterial } from "@/stores/material";
 
+import { isPicLink } from "@/types";
+import type { PicLink } from "@/types";
+
 const store = useMaterial();
 
 type ComsKeys = keyof typeof store.coms;
@@ -39,8 +42,8 @@ const currentComStatus = computed(() => {
   return currentCom.value.status;
 });
 
-provide("updateStatus", updateStatus);
 // 更新仓库组件状态
+provide("updateStatus", updateStatus);
 function updateStatus(configKey: string, payload?: number | string | boolean | object) {
   switch (configKey) {
     case "title":
@@ -60,6 +63,9 @@ function updateStatus(configKey: string, payload?: number | string | boolean | o
         } else {
           ElMessage.error("至少保留两个选项");
         }
+      } else if (payload !== undefined && typeof payload === "object" && isPicLink(payload)) {
+        // 说明是在设置图片的链接
+        store.setPicLinkByIndex(currentCom.value.status[configKey], payload);
       } else {
         // 新增
         store.addOption(currentCom.value.status[configKey]);
@@ -104,6 +110,12 @@ function updateStatus(configKey: string, payload?: number | string | boolean | o
       store.setColor(currentCom.value.status[configKey], payload);
       break;
   }
+}
+
+// 获取文件链接
+provide("getLink", getLink);
+function getLink(link: PicLink) {
+  updateStatus("options", link);
 }
 </script>
 

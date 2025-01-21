@@ -1,5 +1,6 @@
 import { isStringArray } from "@/types";
-import type { TextProps, OptionsProps } from "@/types";
+import type { TextProps, OptionsProps, PicLink } from "@/types";
+import { isPicTitleDesStatusArray } from "@/types";
 
 function setTextStatus(textProps: TextProps, text: string) {
   textProps.status = text;
@@ -43,6 +44,12 @@ function setColor(textProps: TextProps, color: string) {
   textProps.status = color;
 }
 
+function setPicLinkByIndex(optionProps: OptionsProps, payload: PicLink) {
+  if (isPicTitleDesStatusArray(optionProps.status)) {
+    optionProps.status[payload.index].value = payload.link;
+  }
+}
+
 export {
   setTextStatus,
   addOption,
@@ -52,4 +59,5 @@ export {
   setWeight,
   setItalic,
   setColor,
+  setPicLinkByIndex,
 };

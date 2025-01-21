@@ -14,6 +14,7 @@ import {
   setWeight,
   setItalic,
   setColor,
+  setPicLinkByIndex,
 } from "./actions";
 
 export const useMaterial = defineStore("useMaterial", {
@@ -23,11 +24,14 @@ export const useMaterial = defineStore("useMaterial", {
     // 记录所有的业务组件
     coms: {
       "single-select": defaultStatusMap["single-select"](),
-      // "multi-select": {},
+      "single-pic-select": defaultStatusMap["single-pic-select"](),
     },
   }),
 
   actions: {
+    setCurrentMaterial(comName: string) {
+      this.currentMaterial = comName;
+    },
     setTextStatus,
     addOption,
     removeOption,
@@ -36,5 +40,6 @@ export const useMaterial = defineStore("useMaterial", {
     setWeight,
     setItalic,
     setColor,
+    setPicLinkByIndex,
   },
 });

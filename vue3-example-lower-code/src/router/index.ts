@@ -5,7 +5,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("@/views/HomeView.vue"),
+    component: () => import("@/views/HomeView.vue")
   },
   {
     path: "/materials",
@@ -25,49 +25,47 @@ const routes = [
             path: "single-select",
             name: "single-select",
             meta: { title: "单选题" },
-            component: () =>
-              import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue"),
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue")
           },
           {
             path: "multi-select",
             name: "multi-select",
             meta: { title: "多选题" },
-            component: () => import("@/components/SurveyComs/Materials/SelectComs/MultiSelect.vue"),
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/MultiSelect.vue")
           },
           {
             path: "option-select",
             name: "option-select",
             meta: { title: "选项选择" },
-            component: () =>
-              import("@/components/SurveyComs/Materials/SelectComs/OptionSelect.vue"),
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/OptionSelect.vue")
           },
           {
             path: "single-pic-select",
             name: "single-pic-select",
             meta: { title: "单图选择" },
             component: () =>
-              import("@/components/SurveyComs/Materials/SelectComs/SinglePicSelect.vue"),
+              import("@/components/SurveyComs/Materials/SelectComs/SinglePicSelect.vue")
           },
           {
             path: "multi-pic-select",
             name: "multi-pic-select",
             meta: { title: "多图选择" },
             component: () =>
-              import("@/components/SurveyComs/Materials/SelectComs/MultiPicSelect.vue"),
-          },
-        ],
+              import("@/components/SurveyComs/Materials/SelectComs/MultiPicSelect.vue")
+          }
+        ]
       },
       {
         path: "input-group",
         name: "input-group",
         meta: { title: "输入组" },
-        component: () => import("@/views/MaterialsView/InputGroupView.vue"),
+        component: () => import("@/views/MaterialsView/InputGroupView.vue")
       },
       {
         path: "advanced-group",
         name: "advanced-group",
         meta: { title: "高级组" },
-        component: () => import("@/views/MaterialsView/AdvancedGroupView.vue"),
+        component: () => import("@/views/MaterialsView/AdvancedGroupView.vue")
       },
       {
         path: "note-group",
@@ -80,34 +78,49 @@ const routes = [
             path: "text-note",
             name: "text-note",
             meta: { title: "备注说明" },
-            component: () => import("@/components/SurveyComs/Materials/NoteComs/TextNote.vue"),
-          },
-        ],
+            component: () => import("@/components/SurveyComs/Materials/NoteComs/TextNote.vue")
+          }
+        ]
       },
       {
         path: "personal-info-group",
         name: "personal-info-group",
+        redirect: "/materials/personal-info-group/personal-info-gender",
         meta: { title: "个人信息组" },
         component: () => import("@/views/MaterialsView/PersonalInfoGroupView.vue"),
+        children: [
+          {
+            path: "personal-info-gender",
+            name: "personal-info-gender",
+            meta: { title: "性别" },
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue")
+          },
+          {
+            path: "personal-info-education",
+            name: "personal-info-education",
+            meta: { title: "学历" },
+            component: () => import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue")
+          }
+        ]
       },
       {
         path: "contact-group",
         name: "contact-group",
         meta: { title: "联系组" },
-        component: () => import("@/views/MaterialsView/ContactGroupView.vue"),
-      },
-    ],
+        component: () => import("@/views/MaterialsView/ContactGroupView.vue")
+      }
+    ]
   },
   {
     path: "/editor",
     name: "editor",
-    component: () => import("@/views/EditorView/index.vue"),
-  },
+    component: () => import("@/views/EditorView/index.vue")
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes
 });
 
 router.beforeEach((to) => {

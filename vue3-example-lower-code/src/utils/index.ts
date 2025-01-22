@@ -1,6 +1,6 @@
 import { isStringArray, isPicTitleDescStatusArray } from "@/types";
-import type { TextProps, OptionsProps } from "@/types";
-import type { ComTypeStatus } from "@/types-new";
+import type { TextProps, OptionsProps, Status } from "@/types";
+import type { ComTypeStatus, ComKey } from "@/types-new";
 
 /**
  * @description 获取文本属性状态
@@ -74,6 +74,28 @@ function changeEditorShowStatus(status: ComTypeStatus, type: number) {
   }
 }
 
+/**
+ * @description 新增选项前的初始化操作
+ */
+function updateInitStatusBeforeAdd(comsStatus: Status, statusKey: ComKey) {
+  switch (statusKey) {
+    case "personal-info-gender":
+      comsStatus.name = statusKey;
+      comsStatus.status.title.status = "您的性别是？";
+      if ("options" in comsStatus.status) {
+        comsStatus.status.options.status = ["男", "女", "保密"];
+      }
+      break;
+    case "personal-info-education":
+      comsStatus.name = statusKey;
+      comsStatus.status.title.status = "到目前为止您的最高学历是？";
+      if ("options" in comsStatus.status) {
+        comsStatus.status.options.status = ["小学", "初中", "高中", "大专", "本科", "硕士", "博士"];
+      }
+      break;
+  }
+}
+
 export {
   getTextStatus,
   getStringStatus,
@@ -81,4 +103,5 @@ export {
   getPicTitleDesStatus,
   getStringStatusByCurrentStatus,
   changeEditorShowStatus,
+  updateInitStatusBeforeAdd
 };

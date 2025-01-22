@@ -72,8 +72,17 @@ const routes = [
       {
         path: "note-group",
         name: "note-group",
+        redirect: "/materials/note-group/text-note",
         meta: { title: "笔记组" },
         component: () => import("@/views/MaterialsView/NoteGroupView.vue"),
+        children: [
+          {
+            path: "text-note",
+            name: "text-note",
+            meta: { title: "备注说明" },
+            component: () => import("@/components/SurveyComs/Materials/NoteComs/TextNote.vue"),
+          },
+        ],
       },
       {
         path: "personal-info-group",
@@ -103,7 +112,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   // 尽针对组件市场进行跳转
-  if (to.path.startsWith("/materials")) {
+  if (to.path.startsWith("/materials") && to.path.split("/").length === 4) {
     const store = useMaterial();
     store.setCurrentMaterial(to.name as string);
   }

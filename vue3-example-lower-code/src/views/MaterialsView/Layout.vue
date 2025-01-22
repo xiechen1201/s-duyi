@@ -25,16 +25,16 @@ import EditPannel from "@/components/SurveyComs/EditItems/EditPannel.vue";
 import { computed, provide } from "vue";
 import { ElMessage } from "element-plus";
 import { useMaterial } from "@/stores/material";
+import { changeEditorShowStatus } from "@/utils";
 
 import { isPicLink } from "@/types";
 import type { PicLink } from "@/types";
+import type { ComKey } from "@/types-new";
 
 const store = useMaterial();
 
-type ComsKeys = keyof typeof store.coms;
-
 const currentCom = computed(() => {
-  const comInfo = store.coms[store.currentMaterial as ComsKeys];
+  const comInfo = store.coms[store.currentMaterial as ComKey];
   return comInfo;
 });
 
@@ -54,23 +54,6 @@ function updateStatus(configKey: string, payload?: number | string | boolean | o
       }
       store.setTextStatus(currentCom.value.status[configKey], payload);
       break;
-    case "options":
-      if (payload !== undefined && typeof payload === "number") {
-        // 删除
-        const result = store.removeOption(currentCom.value.status[configKey], payload);
-        if (result) {
-          ElMessage.success("删除成功");
-        } else {
-          ElMessage.error("至少保留两个选项");
-        }
-      } else if (payload !== undefined && typeof payload === "object" && isPicLink(payload)) {
-        // 说明是在设置图片的链接
-        store.setPicLinkByIndex(currentCom.value.status[configKey], payload);
-      } else {
-        // 新增
-        store.addOption(currentCom.value.status[configKey]);
-      }
-      break;
     case "position":
       if (typeof payload !== "number") {
         console.error("Invalid payload type for 'position'. Expected number.");
@@ -83,7 +66,7 @@ function updateStatus(configKey: string, payload?: number | string | boolean | o
         console.error("Invalid payload type for 'titleSize' or 'descSize'. Expected number.");
         return;
       }
-      store.setSize(currentCom.value.status[configKey], payload);
+      store.setCurrentStatus(currentCom.value.status[configKey], payload);
       break;
     case "titleWeight":
     case "descWeight":
@@ -108,6 +91,33 @@ function updateStatus(configKey: string, payload?: number | string | boolean | o
         return;
       }
       store.setColor(currentCom.value.status[configKey], payload);
+      break;
+    case "options":
+      if (!("options" in currentComStatus.value)) {
+        return false;
+      }
+      if (payload !== undefined && typeof payload === "number") {
+        // 删除
+        const result = store.removeOption(currentComStatus.value[configKey], payload);
+        if (result) {
+          ElMessage.success("删除成功");
+        } else {
+          ElMessage.error("至少保留两个选项");
+        }
+      } else if (payload !== undefined && typeof payload === "object" && isPicLink(payload)) {
+        // 说明是在设置图片的链接
+        store.setPicLinkByIndex(currentComStatus.value[configKey], payload);
+      } else {
+        // 新增
+        store.addOption(currentComStatus.value[configKey]);
+      }
+      break;
+    case "type":
+      if (!("type" in currentComStatus.value) || typeof payload !== "number") {
+        return false;
+      }
+      changeEditorShowStatus(currentComStatus.value, payload);
+      store.setCurrentStatus(currentComStatus.value.type, payload);
       break;
   }
 }

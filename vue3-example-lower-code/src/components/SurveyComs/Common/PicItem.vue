@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
+import { ref, inject, watch } from "vue";
 import { ElMessage } from "element-plus";
 import { Upload } from "@element-plus/icons-vue";
 
@@ -47,6 +47,24 @@ const props = defineProps<{
 }>();
 
 const imageUrl = ref("");
+
+watch(
+  () => props.value,
+  async (newValue) => {
+    // 说明 value 是存在链接的，发送服务器请求获取这个图片
+    if (newValue) {
+      const response = await fetch(newValue);
+      const blob = await response.blob();
+      const file = new File([blob], "image.jpg", { type: blob.type });
+      imageUrl.value = URL.createObjectURL(file);
+    } else {
+      imageUrl.value = "";
+    }
+  },
+  {
+    immediate: true,
+  },
+);
 
 const getLink = inject<InjectGetLink>("getLink", () => {});
 

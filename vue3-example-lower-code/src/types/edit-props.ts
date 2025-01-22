@@ -2,7 +2,7 @@ import type { VueComType } from "./common";
 
 export type StringStatusArr = string[];
 export type ValueStatusArr = Array<{ value: string; status: string }>;
-export type PicTitleDesStatusArr = Array<{
+export type PicTitleDescStatusArr = Array<{
   picTitle: string;
   picDesc: string;
   value: string;
@@ -19,7 +19,7 @@ export interface TextProps extends BaseProps {
   status: string;
 }
 
-export type OptionsStatusArray = StringStatusArr | ValueStatusArr | PicTitleDesStatusArr;
+export type OptionsStatusArray = StringStatusArr | ValueStatusArr | PicTitleDescStatusArr;
 
 export interface OptionsProps extends BaseProps {
   status: OptionsStatusArray;
@@ -71,9 +71,9 @@ export function isValueStatusArray(status: OptionsStatusArray): status is ValueS
  * @param status
  * @returns
  */
-export function isPicTitleDesStatusArray(
+export function isPicTitleDescStatusArray(
   status: OptionsStatusArray,
-): status is PicTitleDesStatusArr {
+): status is PicTitleDescStatusArr {
   return Array.isArray(status) && typeof status[0] === "object" && "picTitle" in status[0];
 }
 

@@ -3,8 +3,10 @@
  */
 import singleSelectDefaultStatus from "./single-select";
 import singlePicSelect from "./single-pic-select";
+import textNote from "./text-note";
 
 export const defaultStatusMap = {
   "single-select": singleSelectDefaultStatus,
   "single-pic-select": singlePicSelect,
+  "text-note": textNote,
 };

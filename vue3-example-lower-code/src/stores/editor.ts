@@ -45,6 +45,13 @@ export const useEditoeStore = defineStore("editor", {
         this.surveyCount++;
       }
     },
+    removeCom(index: number) {
+      this.coms.splice(index, 1);
+      this.currentComponentIndex = -1;
+      if (isSurveyComName(this.coms[index].name)) {
+        this.surveyCount--;
+      }
+    },
     changeCurrentIndex(index: number) {
       if (index === this.currentComponentIndex) {
         this.currentComponentIndex = -1;

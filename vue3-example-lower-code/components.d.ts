@@ -38,6 +38,8 @@ declare module 'vue' {
     SinglePicSelect: typeof import('./src/components/SurveyComs/Materials/SelectComs/SinglePicSelect.vue')['default']
     SingleSelect: typeof import('./src/components/SurveyComs/Materials/SelectComs/SingleSelect.vue')['default']
     SizeEditor: typeof import('./src/components/SurveyComs/EditItems/SizeEditor.vue')['default']
+    SurveyComGroup: typeof import('./src/components/Editor/SurveyComGroup.vue')['default']
+    SurveyComItem: typeof import('./src/components/Editor/SurveyComItem.vue')['default']
     TextNote: typeof import('./src/components/SurveyComs/Materials/NoteComs/TextNote.vue')['default']
     TextTypeEditor: typeof import('./src/components/SurveyComs/EditItems/TextTypeEditor.vue')['default']
     TitleEditor: typeof import('./src/components/SurveyComs/EditItems/TitleEditor.vue')['default']

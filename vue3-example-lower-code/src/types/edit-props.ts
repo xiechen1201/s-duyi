@@ -72,7 +72,7 @@ export function isValueStatusArray(status: OptionsStatusArray): status is ValueS
  * @returns
  */
 export function isPicTitleDescStatusArray(
-  status: OptionsStatusArray,
+  status: OptionsStatusArray
 ): status is PicTitleDescStatusArr {
   return Array.isArray(status) && typeof status[0] === "object" && "picTitle" in status[0];
 }
@@ -86,4 +86,25 @@ export type PicLink = { link: string; index: number };
  */
 export function isPicLink(data: object): data is PicLink {
   return "link" in data && "index" in data;
+}
+
+/**
+ * 记录题目类型的数组
+ * @var
+ */
+export const surveyComNameArr = [
+  "single-select",
+  "single-pic-select",
+  "personal-info-gender",
+  "personal-info-education"
+];
+
+/**
+ * 判断是否为题目类型
+ * @function
+ * @param comName
+ * @returns
+ */
+export function isSurveyComName(comName: string) {
+  return surveyComNameArr.includes(comName);
 }

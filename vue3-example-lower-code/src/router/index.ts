@@ -114,7 +114,23 @@ const routes = [
   {
     path: "/editor",
     name: "editor",
-    component: () => import("@/views/EditorView/index.vue")
+    redirect: "/editor/survey-type",
+    meta: { title: "编辑器" },
+    component: () => import("@/views/EditorView/index.vue"),
+    children: [
+      {
+        path: "survey-type",
+        name: "survey-type",
+        meta: { title: "" },
+        component: () => import("@/views/EditorView/LeftSide/SurveyType.vue")
+      },
+      {
+        path: "outline",
+        name: "outline",
+        meta: { title: "" },
+        component: () => import("@/views/EditorView/LeftSide/Outline.vue")
+      }
+    ]
   }
 ];
 

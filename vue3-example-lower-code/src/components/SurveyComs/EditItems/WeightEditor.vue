@@ -27,7 +27,7 @@ const props = defineProps<{
 const updateStatus = inject<InjectUpdateStatus>("updateStatus", () => {});
 
 const title = computed(() => {
-  return props.configKey === "descWeight" ? "标题加粗" : "描述加粗";
+  return props.configKey === "descWeight" ? "描述加粗" : "标题加粗";
 });
 
 function onClickBtn(index: number) {

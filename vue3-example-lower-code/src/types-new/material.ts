@@ -1,5 +1,5 @@
 /**
- * 组件的 KEY
+ * 全部组件的 KEY
  * @type
  */
 export type ComKey =

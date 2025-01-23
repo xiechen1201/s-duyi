@@ -17,11 +17,12 @@ import {
   setPicLinkByIndex
 } from "./actions";
 
+import type { Status } from "@/types";
 import type { ComKey } from "@/types-new";
 
 // 哪些组件需要进行初始化
 const keyToInit = ["personal-info-gender", "personal-info-education"];
-const initializedStatus: { [key in ComKey]?: object } = {};
+const initializedStatus: { [key: string]: Status } = {};
 
 keyToInit.forEach((key) => {
   const comkey = key as ComKey;

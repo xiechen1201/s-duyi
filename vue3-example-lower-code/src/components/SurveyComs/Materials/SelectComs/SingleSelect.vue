@@ -14,7 +14,7 @@
       :desc-color="computedState.descColor"
     />
 
-    <el-radio-group>
+    <el-radio-group v-model="radioValue" @change="emitAnswer">
       <el-radio v-for="(item, index) in computedState.options" :value="item" :key="index">
         {{ item }}
       </el-radio>
@@ -25,20 +25,21 @@
 <script setup lang="ts">
 import MaterialsHeader from "@/components/SurveyComs/Common/MaterialsHeader.vue";
 
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
   getTextStatus,
   getStringStatus,
   getCurrentStatus,
-  getStringStatusByCurrentStatus,
+  getStringStatusByCurrentStatus
 } from "@/utils";
-
-import type { OptionsStatus } from "@/types";
+import { type OptionsStatus } from "@/types";
 
 const props = defineProps<{
   seriaNum: number;
   status: OptionsStatus;
 }>();
+
+const emits = defineEmits(["updateAnswer"]);
 
 const computedState = computed(() => ({
   title: getTextStatus(props.status.title),
@@ -52,8 +53,12 @@ const computedState = computed(() => ({
   titleItalic: getCurrentStatus(props.status.titleItalic),
   descItalic: getCurrentStatus(props.status.descItalic),
   titleColor: getTextStatus(props.status.titleColor),
-  descColor: getTextStatus(props.status.descColor),
+  descColor: getTextStatus(props.status.descColor)
 }));
-</script>
 
-<style scoped lang="scss"></style>
+const radioValue = ref("");
+
+function emitAnswer() {
+  emits("updateAnswer", radioValue.value);
+}
+</script>

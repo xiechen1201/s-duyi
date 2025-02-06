@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <BaseHeader :is-editor="false" />
 
   <div>
     <h1 class="font-weight-100 text-center m0 p0">组件市场</h1>
@@ -59,9 +59,9 @@ import {
   EditPen,
   ChatLineSquare,
   User,
-  Message,
+  Message
 } from "@element-plus/icons-vue";
-import Header from "@/components/Common/Header.vue";
+import BaseHeader from "@/components/Common/Header.vue";
 </script>
 
 <style scoped lang="scss">

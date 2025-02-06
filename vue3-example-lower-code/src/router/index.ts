@@ -112,9 +112,15 @@ const routes = [
     ]
   },
   {
-    path: "/editor",
+    path: "/editor/:id(\\d+)?",
     name: "editor",
-    redirect: "/editor/survey-type",
+    redirect: (to) => {
+      if (to.params.id) {
+        return `/editor/${to.params.id}/survey-type`;
+      } else {
+        return "/editor/survey-type";
+      }
+    },
     meta: { title: "编辑器" },
     component: () => import("@/views/EditorView/index.vue"),
     children: [
@@ -131,6 +137,18 @@ const routes = [
         component: () => import("@/views/EditorView/LeftSide/Outline.vue")
       }
     ]
+  },
+  {
+    path: "/preview/:id(\\d+)/:from",
+    name: "preview",
+    meta: { title: "预览" },
+    component: () => import("@/views/Preview.vue")
+  },
+  {
+    path: "/quiz/:id",
+    name: "quiz",
+    meta: { title: "在线答题" },
+    component: () => import("@/views/QuizView.vue")
   }
 ];
 

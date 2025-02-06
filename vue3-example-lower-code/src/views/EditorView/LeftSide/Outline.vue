@@ -12,7 +12,7 @@
             }"
           >
             <div class="item">
-              {{ surveyNo[index] }}.
+              {{ getSeriaNum(index) }}.
               {{ getTitle(element.status) }}
             </div>
           </div>
@@ -33,6 +33,12 @@ import { type ComBaseStatus } from "@/types-new";
 
 const store = useEditoeStore();
 const surveyNo = useSurveyNo(store.coms);
+
+function getSeriaNum(index: number) {
+  const number = surveyNo.value[index];
+  const lastNumber = surveyNo.value.filter((el) => !!el).shift();
+  return number === null ? lastNumber : number;
+}
 
 function onDragStart() {
   store.changeCurrentIndex(-1);

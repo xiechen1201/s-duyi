@@ -9,6 +9,7 @@ import { isSurveyComName } from "@/types";
  * @example [1, 2, null, 3, 4] ==> [1, 2, 3, 4]
  */
 function useSurveyNo(coms: Status[]) {
+  console.log(coms);
   return computed(() => {
     let questionNumber = 1;
     return coms.map((com) => {

@@ -1,6 +1,8 @@
+import { componentMap } from "@/configs/component-map";
 import { isStringArray, isPicTitleDescStatusArray } from "@/types";
-import type { TextProps, OptionsProps, Status } from "@/types";
+import type { TextProps, OptionsProps, Status, SurveyDBData } from "@/types";
 import type { ComTypeStatus, ComKey } from "@/types-new";
+import type { TableColumnCtx } from "element-plus";
 
 /**
  * @description 获取文本属性状态
@@ -96,6 +98,41 @@ function updateInitStatusBeforeAdd(comsStatus: Status, statusKey: ComKey) {
   }
 }
 
+/**
+ * 时间格式化
+ * @param row
+ * @param column
+ * @param cellValue
+ * @returns
+ */
+export function formatDate(
+  row: SurveyDBData,
+  column: TableColumnCtx<SurveyDBData>,
+  cellValue: number
+) {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  };
+  return new Intl.DateTimeFormat("zh-CN", options).format(new Date(cellValue));
+}
+
+function restoreComponentsStatus(coms: Status[]) {
+  coms.forEach((com) => {
+    // 业务组件的还原
+    com.type = componentMap[com.name];
+    // 编辑组件的还原
+    for (const key in com.status) {
+      const name = com.status[key].name;
+      com.status[key].editCom = componentMap[name];
+    }
+  });
+}
+
 export {
   getTextStatus,
   getStringStatus,
@@ -103,5 +140,6 @@ export {
   getPicTitleDesStatus,
   getStringStatusByCurrentStatus,
   changeEditorShowStatus,
-  updateInitStatusBeforeAdd
+  updateInitStatusBeforeAdd,
+  restoreComponentsStatus
 };

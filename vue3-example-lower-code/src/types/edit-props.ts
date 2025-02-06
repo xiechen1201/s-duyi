@@ -108,3 +108,26 @@ export const surveyComNameArr = [
 export function isSurveyComName(comName: string) {
   return surveyComNameArr.includes(comName);
 }
+
+const PDFComs = [
+  "single-select",
+  "single-pic-select",
+  "personal-info-gender",
+  "personal-info-education",
+  "text-note"
+];
+
+/**
+ * 判断是否可以用于 PDF 导出
+ * @function
+ * @param value
+ * @returns
+ */
+export function canUsedForPDF(value: string): boolean {
+  return PDFComs.includes(value);
+}
+
+export type QuizData = {
+  surveyCount: number;
+  coms: TextProps[] | OptionsProps[];
+};

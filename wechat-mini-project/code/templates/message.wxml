@@ -1,0 +1,3 @@
+<template name="message">
+	This is message info! Type is {{ type }}.
+</template>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .user-info {
+            text-align: center;
+            padding: 20px 0 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        .menu-item:hover {
+            background-color: #f8f8f8;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item i {
+            margin-right: 12px;
+            color: #333;
+            font-size: 20px;
+        }
+        .menu-item span {
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info">
+            <img src="https://via.placeholder.com/80" alt="头像" class="avatar">
+            <h2 style="margin-bottom: 10px;">用户名</h2>
+            <p style="color: #666;">ID: 12345678</p>
+        </div>
+
+        <div class="menu-list">
+            <div class="menu-item">
+                <i>📱</i>
+                <span>我的账户</span>
+            </div>
+            <div class="menu-item">
+                <i>🔒</i>
+                <span>账户安全</span>
+            </div>
+            <div class="menu-item">
+                <i>⚙️</i>
+                <span>系统设置</span>
+            </div>
+            <div class="menu-item">
+                <i>❓</i>
+                <span>帮助中心</span>
+            </div>
+            <div class="menu-item">
+                <i>📞</i>
+                <span>联系我们</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

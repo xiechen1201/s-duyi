@@ -1,0 +1,16 @@
+<import src="../../templates/message" />
+
+<view>
+  <text>1</text>
+  <text>2</text>
+</view>
+
+<text>{{ currentCount }}</text>
+
+<view wx:for="{{ fuits }}" wx:key="index">
+  {{ item }}
+</view>
+
+<template is="message" data="{{ type: 'success' }}" />
+
+<button bindtap="onTapBtn">点击按钮</button>

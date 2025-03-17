@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container">
+            <h1>欢迎来到我的网页</h1>
+            <p>这是一个包含多种元素的示例内容：</p>
+            <ul>
+                <li>列表项一</li>
+                <li>列表项二</li>
+                <li>列表项三</li>
+            </ul>
+        </div>
+        <button onclick="downloadImage()">点击我</button>
+
+        <div class="show">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+        <script>
+            function downloadImage() {
+                html2canvas(document.querySelector("#container")).then(
+                    function (canvas) {
+                        canvas.toBlob((blob) => {
+                            navigator.clipboard
+                                .write([
+                                    new ClipboardItem({
+                                        "image/jpeg": blob
+                                    })
+                                ])
+                                .then(() => {
+                                    alert("复制成功！");
+                                });
+                        });
+
+                        /*  var image = canvas.toDataURL("image/png");
+                        var link = document.createElement("a");
+
+                        let canvans = document.querySelector("#canvas");
+                        console.log(canvans)
+                        let ctx = canvans.getContext("2d");
+                        ctx.drawImage(canvas, 0, 0); */
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>

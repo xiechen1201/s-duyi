@@ -1,0 +1,6 @@
+[2025-04-16T11:27:31.451] [INFO] sql - Hello, World!
+[2025-04-16T11:27:31.454] [DEBUG] sql - Some debug messages
+2025-04-16 14:08:04 [INFO] Hello, World!
+2025-04-16 14:08:04 [DEBUG] Some debug messages
+sql 2025-04-16 14:11:43 [INFO] Hello, World!
+sql 2025-04-16 14:11:43 [DEBUG] Some debug messages

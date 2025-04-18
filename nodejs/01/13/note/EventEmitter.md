@@ -37,7 +37,7 @@ console.log("script end")
 
 内部维护了多个事件多列，可以理解是一个普通的数组。
 
-```js
+```jsx
 {
     "eventName": [
         () => {},

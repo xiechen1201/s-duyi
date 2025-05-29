@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button>发送数据到服务器</button>
+        <script>
+            const socket = new WebSocket("ws://localhost:3000");
+
+            socket.onopen = () => {
+                console.log("连接已打开");
+                socket.send("Hello Server!");
+            };
+
+            socket.onmessage = (event) => {
+                console.log("收到：", event.data);
+            };
+
+            socket.onclose = () => {
+                console.log("连接已关闭");
+            };
+        </script>
+    </body>
+</html>

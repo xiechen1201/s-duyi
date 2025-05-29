@@ -1,0 +1,24 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -x npm run server",
+    "server": "node app.js",
+    "server2": "node --inspect app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "md5": "^2.3.0",
+    "mysql2": "^3.14.0",
+    "nodemon": "^3.1.9",
+    "path-to-regexp": "^8.2.0",
+    "sequelize": "^6.37.7"
+  }
+}

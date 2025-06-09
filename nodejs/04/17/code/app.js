@@ -31,7 +31,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.get("/download/:filename", (req, res) => {
-    res.download(path.resolve(__dirname, "upload", req.params.filename));
+    res.download(path.resolve(__dirname, "uploads", req.params.filename));
 });
 
 app.use(function (err, req, res, next) {

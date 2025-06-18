@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 200px;
+                height: 200px;
+                background: green;
+                color: #fff;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0.5;
+            }
+            input {
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="http://www.baidu.com/">度娘</a>
+        <br />
+        <input type="text" />
+        <p>这是一个段落</p>
+        <div class="container"></div>
+
+        <script>
+            var box = document.querySelector(".container");
+            box.addEventListener("touchstart", (e) => {
+                box.style.display = "none";
+                e.preventDefault();
+            });
+
+            const p = document.querySelector("p");
+            p.addEventListener("click", () => {
+                console.log("该段落被点击了");
+            });
+        </script>
+    </body>
+</html>

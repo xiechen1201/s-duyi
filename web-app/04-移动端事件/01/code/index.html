@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+        <title>Document</title>
+        <style>
+            .container {
+                width: 200px;
+                height: 200px;
+                background-color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+        <script>
+            var box = document.querySelector(".container");
+            box.addEventListener("touchstart", () => {
+                console.log("手指按下去了");
+            });
+            box.addEventListener("touchmove", () => {
+                console.log("手指滑动了");
+            });
+            box.addEventListener("touchend", () => {
+                console.log("手指抬起了");
+            });
+
+            /* var box = document.querySelector(".container");
+            box.addEventListener("click", () => {
+                console.log("click 事件触发");
+            });
+            box.addEventListener("touchstart", () => {
+                console.log("touchstart 事件触发");
+            }); */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <style>
+            body {
+                margin: 0;
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            li {
+                line-height: 50px;
+            }
+
+            li a {
+                font-size: 30px;
+            }
+
+            input {
+                border: 1px solid #000;
+            }
+        </style>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="page">
+            <img src="./template.jpeg" alt="" width="100%" />
+            <input type="text" />
+            <ul>
+                <li><a href="http://www.baidu.com">度娘</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+                <li><a href="#">这是一个很长很长的链接</a></li>
+            </ul>
+        </div>
+
+        <script>
+            const page = document.querySelector(".page");
+            page.addEventListener("touchstart", (ev) => {
+                ev.preventDefault();
+            });
+        </script>
+    </body>
+</html>

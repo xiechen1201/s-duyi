@@ -1,28 +1,26 @@
 import { useEffect } from "react";
-import { formatDate } from "../utils";
 
 function ChildCom2(props) {
+
     /* useEffect(() => {
         console.log(
-            `日志：组件ChildCom2已经创建，创建时间${formatDate(
-                Date.now(),
-                "year-time"
-            )}`
+            `日志：组件${
+                ChildCom2.name
+            }已经创建，创建时间${new Date().toLocaleDateString()}`
         );
         return function () {
             console.log(
-                `日志：组件ChildCom2已经销毁，销毁时间${formatDate(
-                    Date.now(),
-                    "year-time"
-                )}`
+                `日志：组件${
+                    ChildCom2.name
+                }已经销毁，销毁时间${new Date().toLocaleDateString()}`
             );
         };
     }, []); */
 
     return (
         <div>
-            这是子组件
-            <div>年龄: {props.age}</div>
+            <li>这是子组件2</li>
+            <li>年龄:{props.age}</li>
         </div>
     );
 }

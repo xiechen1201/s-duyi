@@ -3,8 +3,8 @@ import { formatDate } from "../utils";
 
 /**
  * 在接收的组件上面添加一些公共的逻辑
- * @param {*} Com 组件
- * @returns {} 返回一个新组件
+ * @param {Function} Com 组件
+ * @returns {Function} 返回一个新组件
  */
 function withLog(Com) {
     return function NewCom(props) {

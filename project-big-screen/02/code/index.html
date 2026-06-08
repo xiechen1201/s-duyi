@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .design-container {
+                position: relative;
+                left: 50%;
+                width: 1920px;
+                height: 1080px;
+                background-color: #f0f0f0;
+                transform-origin: left top;
+            }
+            .dashboard-item {
+                position: absolute;
+                top: 150px;
+                left: 200px;
+                width: 500px;
+                height: 150px;
+                background-color: #343434;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="design-container">
+            <div class="dashboard-item"></div>
+        </div>
+
+        <script>
+            function adjustScale() {
+                const designWidth = 1920;
+                const designHeight = 1080;
+                const container = document.querySelector(".design-container");
+
+                // 计算宽高比例
+                const scaleX = window.innerWidth / designWidth;
+                const scaleY = window.innerHeight / designHeight;
+                const scale = Math.min(scaleX, scaleY);
+                container.style.transform = `scale(${scale}) translate(-50%)`;
+            }
+
+            adjustScale()
+            window.addEventListener("resize", adjustScale);
+        </script>
+    </body>
+</html>

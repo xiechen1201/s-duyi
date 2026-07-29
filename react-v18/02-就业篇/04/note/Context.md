@@ -14,7 +14,7 @@
 
 三个步骤：
 
-1、创建 
+1、创建
 
 2、提供
 
@@ -26,6 +26,24 @@
 
 ## 默认值
 
+const MyContext = createContext("hello world");
+
+不提供 provider 就会使用默认值，子组件直接消费默认的数据。
+
 ## 多个上下文环境
 
+```
+<ThemeContext.Provider value='dark'>
+  <MyContext.Provider value='hello context'>
+    <ChildCom />
+  </MyContext.Provider>
+</ThemeContext.Provider>
+```
+
+如果存在同名的 context，会使用最近的 provider 提供的数据。
+
 ## 相关的 hook
+
+useContext
+
+- 消费上下文环境中的数据

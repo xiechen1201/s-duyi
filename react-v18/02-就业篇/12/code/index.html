@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.time(); // 计时开始
+      const arr = [];
+      // 创建1w个DOM元素
+      for (let i = 0; i < 10000; i++) {
+        arr.push(document.createElement("div"));
+      }
+      console.timeEnd(); // 计时结束 // 平均 1.2ms
+
+      console.time(); // 计时开始
+      const arr2 = [];
+      // 创建1w个JS对象元素
+      for (let i = 0; i < 10000; i++) {
+        arr2.push({
+          tag: "div"
+        });
+      }
+      console.timeEnd(); // 计时结束 // 平均 0.2ms
+    </script>
+  </body>
+</html>

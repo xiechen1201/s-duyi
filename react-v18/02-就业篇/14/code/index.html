@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ball {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #f00;
+        position: absolute;
+        left: 0;
+        top: 50px;
+        animation: move 10s infinite alternate;
+      }
+      @keyframes move {
+        0% {
+          left: 0px;
+        }
+        100% {
+          left: 500px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <script>
+       // 模拟延迟
+      function delay(duration) {
+        const start = Date.now();
+        while (Date.now() - start < duration) {}
+      }
+
+      // 存放任务的数组
+      const taskList = [];
+
+      for (let i = 0; i < 10; i++) {
+        taskList.push(() => {
+          delay(10);
+          console.log(`执行任务${i}`);
+        });
+      }
+
+      // 执行任务，每一帧渲染完成后的剩余时间，如果时间充足就执行任务
+      // 如果不充足，那就在下一帧渲染后再接着执行
+      function executeTask(deadline) {
+        console.log(`当前帧渲染完成后的剩余时间为${deadline.timeRemaining()}`);
+        while (deadline.timeRemaining() > 0 && taskList.length > 0) {
+          taskList.shift()();
+        }
+        // 没有进入 while 循环，说明当前帧渲染完成后的剩余时间不足，但是任务列表依旧存在任务
+        // 需要等下一帧渲染后再接着执行
+        if (taskList.length > 0) {
+          window.requestIdleCallback(executeTask);
+        }
+      }
+      window.requestIdleCallback(executeTask);
+    </script>
+  </body>
+</html>

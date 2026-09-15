@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let count = 0;
+
+      function test() {
+        console.log(Date.now());
+        count++;
+        if (count < 10) {
+          setTimeout(test, 0);
+        }
+      }
+      setTimeout(test, 0);
+    </script>
+  </body>
+</html>
+ 

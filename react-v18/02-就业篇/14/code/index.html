@@ -49,6 +49,7 @@
       function executeTask(deadline) {
         console.log(`当前帧渲染完成后的剩余时间为${deadline.timeRemaining()}`);
         while (deadline.timeRemaining() > 0 && taskList.length > 0) {
+          console.log(deadline.timeRemaining())
           taskList.shift()();
         }
         // 没有进入 while 循环，说明当前帧渲染完成后的剩余时间不足，但是任务列表依旧存在任务

@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 // import App from "./App.js";
-import { addEvent } from "./myEvent";
+import { addEvent } from "./my-event";
 
 const jsx = (
   <div bindCLICK={(e) => console.log("click div")}>
     <h3>你好</h3>
     <button
       bindCLICK={(e) => {
-        e.stopPropagation();
+        // e.stopPropagation();
         console.log("click button");
       }}
     >
